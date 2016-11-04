@@ -1,4 +1,47 @@
+@import '../../core/styles/colors.scss';
+
 header {
 	width:100%;
 	float:left;
+	position:absolute;
+	padding:15px 0px;
+	z-index:100;
+
+	.navbar-brand {
+		width: 40px;
+		height: 50px;
+		background: url(../../../static/images/logo.png) no-repeat top left;
+		background-size: contain;
+		float: left;
+		position: absolute;
+
+		&:hover {
+			background-image: url(../../../static/images/logo_hover.png);
+		}
+	}
+
+	.navbar-right {
+		float:right;
+	}
+
+	.navbar-nav {
+
+		.nav-item {
+			.nav-link {
+				color:#fff;
+				text-decoration:none;
+				font-size:20px;
+				text-transform: uppercase;
+				font-weight: 600;
+				line-height: 1;
+
+				&:hover {
+					color: $color-orange-dark;
+				}
+			}
+		}
+	}
+
+
+
 }

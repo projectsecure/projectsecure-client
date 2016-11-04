@@ -1,0 +1,71 @@
+@import '../../core/styles/colors.scss';
+
+.section-intro {
+	width: 100%;
+	float:left;
+	background:#dac9b7 url(../../../static/images/bgtmp.png) center bottom no-repeat;
+	background-size:100% auto;
+
+	& > .container {
+		padding-top: 180px;
+		padding-bottom: 60px;
+		position: relative;
+	}
+
+	h1 {
+		color:#fff;
+		font-size: 64px;
+		line-height: 64px;
+		font-weight: 600;
+	}
+
+	h2 {
+		color:#fff;
+		font-size: 48px;
+		line-height: 48px;
+		margin-top:30px;
+		font-weight: 500;
+	}
+
+	.cta {
+		float:left;
+		margin-top:50px;
+
+		span {
+			color:#fff;
+			color:#fff;
+			font-size: 24px;
+			line-height: 50px;
+			font-weight:600;
+			margin-left:20px;
+		}
+
+		.btn {
+			color:#fff;
+			font-size: 24px;
+			line-height: 24px;
+			font-weight: 600;
+			float:left;
+			text-transform: uppercase;
+		}
+	}
+
+	.lion {
+		background:url(../../../static/images/home/lion.png) no-repeat center center;
+		width:240px;
+		height:242px;
+		float:right;
+		position: absolute;
+		right:0px;
+		bottom:-40px;
+
+		.eyes {
+			background:url(../../../static/images/home/lioneyes.gif) no-repeat center center;
+			width:59px;
+			height:55px;
+			position: absolute;
+			left:63px;
+			top:66px;
+		}
+	}
+}

@@ -1,5 +1,7 @@
 import LayoutStatic from '../../static/components/layout';
 
+import SectionIntro from './intro';
+
 require('../styles/home.scss');
 
 class Home extends React.Component {
@@ -11,7 +13,7 @@ class Home extends React.Component {
 	render() {
 		return (
 			<LayoutStatic className="route-root">
-
+				<SectionIntro />
 			</LayoutStatic>
 		);
 	}

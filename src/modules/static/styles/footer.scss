@@ -1,4 +1,31 @@
+@import '../../core/styles/colors.scss';
+
 footer {
 	width:100%;
 	float:left;
+	padding:20px 0px;
+	background:#f3f0ed;
+	text-align: center;
+	font-size:14px;
+	text-transform:uppercase;
+	font-weight:600;
+	color:#42403f;
+
+	a {
+		color:#6F6A68;
+		text-decoration: none;
+
+		&:hover {
+			color:$color-orange;
+		}
+	}
+
+	.row div {
+		padding-top:10px!important;
+		padding-bottom:10px!important;
+	}
+
+	.heart {
+		color:$color-orange;
+	}
 }
