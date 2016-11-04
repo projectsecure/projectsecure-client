@@ -1,0 +1,17 @@
+@import '../../core/styles/colors.scss';
+
+.challenge-card {
+	background:$color-beige;
+	border:none;
+
+	h3 {
+		font-weight:600;
+		margin-bottom:0px;
+	}
+
+	.card-image {
+		width:100%;
+		height:200px;
+		background:#bbad9d;
+	}
+}
