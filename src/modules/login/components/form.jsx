@@ -148,7 +148,7 @@ class SectionForm extends React.Component {
 		if(this.props.role == 'login') {
 			return (<p>Neu bei Project Secure? <Link to="/signup/">Jetzt loslegen!</Link></p>);
 		} else {
-			return (<p>Du bist schon registriert? <Link to="/login/">Jetzt einloggen!</Link></p>);
+			return (<p>Du bist schon registriert? <Link to="/login/">Einloggen</Link></p>);
 		}
 	}
 

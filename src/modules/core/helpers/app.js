@@ -81,9 +81,9 @@ export default class App {
 					path: '/',
 					component: Layout,
 					indexRoute: indexRoute,
-					childRoutes: routes,
-					render: applyRouterMiddleware(useScroll())
+					childRoutes: routes
 				}}
+				render={applyRouterMiddleware(useScroll())}
 			/>
 		);
 	}
