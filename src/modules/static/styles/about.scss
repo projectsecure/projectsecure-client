@@ -4,5 +4,12 @@
 	width: 100%;
 	float:left;
 	background:$color-beige;
-	padding: 40px 0px;
+	padding: 60px 0px 50px;
+
+	.fa {
+		font-size:48px;
+		opacity: .5;
+		margin-bottom:20px;
+		display:inline-block;
+	}
 }

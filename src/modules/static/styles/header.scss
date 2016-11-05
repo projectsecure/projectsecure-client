@@ -37,6 +37,10 @@ header {
 
 				&:hover {
 					color: $color-orange-dark;
+
+					&.btn {
+						color:#fff;
+					}
 				}
 			}
 		}

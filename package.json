@@ -24,9 +24,11 @@
     "express-urlrewrite": "^1.2.0",
     "jquery": "^3.1.1",
     "react": "^0.14.3",
+    "react-color": "^2.4.0",
     "react-dom": "^0.14.3",
     "react-komposer": "^1.13.1",
     "react-router": "^3.0.0",
+    "react-router-scroll": "^0.4.1",
     "serve-favicon": "^2.3.0",
     "winston": "^2.2.0"
   },

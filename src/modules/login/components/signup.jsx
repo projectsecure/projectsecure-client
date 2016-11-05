@@ -12,7 +12,7 @@ class Login extends React.Component {
 	render() {
 		return (
 			<LayoutStatic className="route-login">
-				<SectionForm role="login" />
+				<SectionForm role="signup" />
 			</LayoutStatic>
 		);
 	}

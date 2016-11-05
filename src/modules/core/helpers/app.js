@@ -1,4 +1,5 @@
-import { browserHistory, hashHistory, Router, Route, Link } from 'react-router';
+import { applyRouterMiddleware, browserHistory, hashHistory, Router, Route, Link } from 'react-router';
+import { useScroll } from 'react-router-scroll';
 
 import Layout from '../components/layout';
 
@@ -80,7 +81,8 @@ export default class App {
 					path: '/',
 					component: Layout,
 					indexRoute: indexRoute,
-					childRoutes: routes
+					childRoutes: routes,
+					render: applyRouterMiddleware(useScroll())
 				}}
 			/>
 		);

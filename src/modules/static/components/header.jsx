@@ -29,8 +29,8 @@ class Header extends React.Component {
 									<Link className="nav-link" to="/login/">Kontakt</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="signup" to="/login/">
-										<button className="nav-link btn btn-primary">Login</button>
+									<Link className="signup nav-link btn btn-primary" to="/login/">
+										Login
 									</Link>
 								</li>
 							</ul>

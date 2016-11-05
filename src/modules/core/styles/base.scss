@@ -1,4 +1,3 @@
-@import "../../../static/fonts/ptsans/ptsans.css";
 @import "../../../static/fonts/fontawesome/fontawesome.css";
 @import "colors";
 
@@ -25,3 +24,13 @@
 .text-center {
 	text-align:center;
 }
+
+body {
+	font-weight:500;
+}
+
+
+label {
+	font-weight: bold;
+}
+

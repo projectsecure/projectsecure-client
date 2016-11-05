@@ -1,5 +1,5 @@
 import Login from './login';
-import LoginForm from './login_form';
+import LoginForm from './form';
 
 export default {
 	Login,
