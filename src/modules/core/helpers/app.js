@@ -79,7 +79,6 @@ export default class App {
 				history={browserHistory}
 				routes={{
 					path: '/',
-					component: Layout,
 					indexRoute: indexRoute,
 					childRoutes: routes
 				}}

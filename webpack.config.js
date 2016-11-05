@@ -56,6 +56,7 @@ var config = {
 			jQuery:"jquery",
 			"window.Tether": 'tether',
 			tether: 'tether',
+			Tether: 'tether',
 			'React': 'react'
 		})
 	]

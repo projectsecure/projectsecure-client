@@ -1,3 +1,5 @@
+import {Link} from 'react-router';
+
 require('../styles/card.scss');
 
 class ChallengeCard extends React.Component {
@@ -17,7 +19,7 @@ class ChallengeCard extends React.Component {
 				</div>
 				<div className="card-block">
 					<p className="card-text">{this.props.summary}</p>
-					<button className="btn btn-uppercase btn-primary btn-block">Jetzt loslegen</button>
+					<Link className="btn btn-uppercase btn-primary btn-block" to="/signup/?c=123">Jetzt loslegen</Link>
 				</div>
 			</div>
 		);
