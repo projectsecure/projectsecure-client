@@ -16,6 +16,8 @@ class Dashboard extends React.Component {
 			<LayoutBackend className="route-dashboard">
 				<SectionProfile />
 				<SectionChallenges />
+				<SectionChallenges />
+				<SectionChallenges />
 			</LayoutBackend>
 		);
 	}

@@ -1,7 +1,7 @@
 import Layout from '../../core/components/layout';
 
 import Header from './header';
-import Footer from './footer';
+import Footer from '../../core/components/footer';
 
 class LayoutStatic extends React.Component {
 
