@@ -1,7 +1,7 @@
 import LayoutStatic from '../../static/components/layout';
 
 import SectionIntro from './intro';
-import SectionChallenges from '../../challenges/components/challenges';
+import SectionChallenges from '../../challenges/components/grid';
 import SectionAbout from './about';
 import SectionMentions from './mentions';
 

@@ -1,14 +1,11 @@
 import {render} from 'react-dom';
 import {compose} from 'react-komposer';
 
-import component from '../components/challenge';
-import actions from '../actions/challenge';
+import component from '../components/settings';
 
 const composer = (props, onData) => {
 
-	let componentData = {
-		actions
-	};
+	let componentData = {};
 
 	onData(null, componentData);
 };

@@ -1,15 +1,22 @@
 @import '../../core/styles/colors.scss';
 
-.route-login .section-form,
-.route-signup .section-form {
+.route-settings .section-form {
 	width:100%;
 	float:left;
 	background: #dac9b7;
-	padding: 180px 0px 200px;
+	padding: 50px 0px;
 
-	input,
-	.color-picker {
-		margin-bottom:20px;
+	.field-avatar {
+		line-height:128px;
+
+		.img-avatar {
+			border-radius:50%;
+			width:128px;
+			height:128px;
+			margin-right:20px;
+			border:3px solid #fff;
+			float: left;
+		}
 	}
 
 	.color-picker {
@@ -47,17 +54,24 @@
 
 	}
 
-	.btn {
+	.seperator {
+		margin:40px 0px;
+		width:100%;
+		height:1px;
+		background:rgba(0,0,0,0.2);
+	}
+
+	h3 {
+		margin-bottom:30px;
+	}
+
+	.btn-save {
 		margin-top:20px;
 		margin-bottom:40px;
 	}
 
 	h2 {
-		font-size: 48px;
-		line-height: 48px;
-		font-weight:500;
-		margin-bottom:60px;
-		color:#fff;
+		margin-bottom:50px;
 	}
 
 }

@@ -1,7 +1,7 @@
 import LayoutBackend from '../../backend/components/layout';
 
 import SectionProfile from './profile';
-import SectionChallenges from '../../challenges/components/challenges';
+import ChallengesGrid from '../../challenges/components/grid';
 
 require('../styles/dashboard.scss');
 
@@ -12,12 +12,32 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
+		const challenges = [
+			{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			}
+		];
+
 		return (
 			<LayoutBackend className="route-dashboard">
 				<SectionProfile />
-				<SectionChallenges />
-				<SectionChallenges />
-				<SectionChallenges />
+				<ChallengesGrid challenges={challenges} title="Challenges fortsetzen" />
 			</LayoutBackend>
 		);
 	}

@@ -1,42 +1,45 @@
-require('../styles/challenges.scss');
+import LayoutBackend from '../../backend/components/layout';
 
-import Card from '../../challenges/components/card';
+import Grid from '../../challenges/components/grid';
 
-class SectionChallenges extends React.Component {
+require('../styles/grid.scss');
+
+class Challenges extends React.Component {
 
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
+		const challenges = [
+			{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			}
+		];
+
 		return (
-			<section className="section-challenges">
-				<div className="container">
-					<div className="row">
-						<div className="col-sm-4">
-							<Card
-								title="Identity Leak"
-								summary="At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?"
-							/>
-						</div>
-						<div className="col-sm-4">
-							<Card
-								title="AdBlocker"
-								summary="At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?"
-							/>
-						</div>
-						<div className="col-sm-4">
-							<Card
-								title="TOR"
-								summary="At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?"
-							/>
-						</div>
-					</div>
-				</div>
-			</section>
+			<LayoutBackend className="route-dashboard">
+				<Grid challenges={challenges} title="Neue Challenges" />
+			</LayoutBackend>
 		);
 	}
 
 }
 
-export default SectionChallenges;
+export default Challenges;

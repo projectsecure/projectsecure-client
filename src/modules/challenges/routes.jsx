@@ -1,9 +1,9 @@
-import Challenge from './containers/challenge';
+import Challenges from './containers/challenges';
 
 export default [
 	{
-		path: '/challenge/',
-		name: 'challenge',
-		component: Challenge
+		path: '/challenges/',
+		name: 'challenges',
+		component: Challenges
 	}
 ];

@@ -1,9 +1,7 @@
 import SectionForm from './form';
 import LayoutStatic from '../../static/components/layout';
 
-require('../styles/login.scss');
-
-class Login extends React.Component {
+class Signup extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -11,7 +9,7 @@ class Login extends React.Component {
 
 	render() {
 		return (
-			<LayoutStatic className="route-login">
+			<LayoutStatic className="route-signup">
 				<SectionForm role="signup" />
 			</LayoutStatic>
 		);
@@ -19,4 +17,4 @@ class Login extends React.Component {
 
 }
 
-export default Login;
+export default Signup;

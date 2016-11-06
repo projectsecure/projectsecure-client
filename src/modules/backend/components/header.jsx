@@ -17,10 +17,10 @@ class HeaderBackend extends React.Component {
 							<Link className="navbar-brand" to="/" />
 							<ul className="nav navbar-nav navbar-right">
 								<li className="nav-item">
-									<Link className="nav-link" to="/login/">Dashboard</Link>
+									<Link className="nav-link" activeClassName="active" to="/dashboard/">Dashboard</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="nav-link" to="/login/">Challenges</Link>
+									<Link className="nav-link" activeClassName="active" to="/challenges/">Challenges</Link>
 								</li>
 								<li className="nav-item">
 									<div className="btn-group">
@@ -28,6 +28,7 @@ class HeaderBackend extends React.Component {
 											<img className="img-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" /><span>Lukas Müller</span>
 										</button>
 										<div className="dropdown-menu dropdown-menu-right">
+											<Link className="dropdown-item" to="/settings/">Einstellungen</Link>
 											<Link className="dropdown-item" to="/login/">Logout</Link>
 										</div>
 									</div>

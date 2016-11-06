@@ -20,7 +20,8 @@ header.header-backend {
 		border-radius:4px;
 		line-height:30px !important;
 
-		&:hover {
+		&:hover,
+		&.active {
 			background:$color-orange-dark;
 			color:#fff !important;
 		}
@@ -34,16 +35,18 @@ header.header-backend {
 		border:none;
 		padding-left:10px;
 		padding-right:10px;
-		color:#fff;
+		color:#fff !important;
 		font-weight:500;
 		height:46px;
 		padding:5px 15px !important;
 		margin:-8px -15px -8px 20px !important;
+		background: none !important;
 
 
 		&.btn:hover,
 		&.btn:active,
-		&.btn:focus{
+		&.btn.active,
+		&.btn:focus {
 			background:$color-orange-dark !important;
 			color:#fff !important;
 

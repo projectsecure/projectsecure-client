@@ -5,11 +5,15 @@ import Login from './login';
 
 import Backend from './backend';
 import Dashboard from './dashboard';
+import Challenges from './challenges';
+import Settings from './settings';
 
 export default {
 	Core,
 	Backend,
 	Login,
     Static,
-	Dashboard
+	Dashboard,
+	Challenges,
+	Settings
 };

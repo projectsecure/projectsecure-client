@@ -16,8 +16,6 @@ class SectionForm extends React.Component {
 		}
 	}
 
-
-
 	colorPickerHandleClick()  {
 		this.setState({ displayColorPicker: !this.state.displayColorPicker })
 	};
