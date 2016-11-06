@@ -1,0 +1,24 @@
+@import '../../core/styles/colors.scss';
+
+.section-profile {
+	width:100%;
+	float:left;
+	background: #dac9b7;
+	padding: 40px 0px;
+	text-align: center;
+	background:#dac9b7 url(../../../static/images/bgtmp.png) center top no-repeat;
+	background-size:100% auto;
+
+	.img-avatar {
+		border-radius:50%;
+		width:64px;
+		height:64px;
+		margin-bottom:20px;
+		border:3px solid #fff;
+	}
+
+	h3 {
+		font-weight:500;
+		color:#fff;
+	}
+}
