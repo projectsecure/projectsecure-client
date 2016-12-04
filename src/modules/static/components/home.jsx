@@ -1,7 +1,7 @@
 import LayoutStatic from '../../static/components/layout';
 
 import SectionIntro from './intro';
-import SectionChallenges from '../../challenges/components/grid';
+import ChallengesGrid from '../../challenges/components/grid';
 import SectionAbout from './about';
 import SectionMentions from './mentions';
 
@@ -14,10 +14,23 @@ class Home extends React.Component {
 	}
 
 	render() {
+		const challenges = [
+			{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			},{
+				title:'TOR',
+				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
+			}
+		];
+
 		return (
 			<LayoutStatic className="route-home">
 				<SectionIntro />
-				<SectionChallenges />
+				<ChallengesGrid challenges={challenges} />
 				<SectionAbout />
 				<SectionMentions />
 			</LayoutStatic>

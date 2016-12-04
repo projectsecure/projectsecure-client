@@ -1,0 +1,16 @@
+@import '../../core/styles/colors.scss';
+
+.section-challenge {
+	width: 100%;
+	float: left;
+	padding: 60px 0px 30px;
+	background: $color-beige;
+
+	.card-step {
+		border-top:1px solid #eee;
+	}
+
+	h2 {
+		margin-bottom:0px;
+	}
+}

@@ -20,7 +20,7 @@ class Footer extends React.Component {
 							Made with <span className="heart">&hearts;</span> in Berlin
 						</div>
 						<div className=" col-sm-12 col-md-4">
-							<a href="">Kontakt</a>&emsp;<a href="">Partner werden</a>&emsp;<a href="">Impressum</a>
+							<Link to="/contact/">Kontakt</Link>&emsp;<Link to="/partner/">Partner werden</Link>&emsp;<Link to="/imprint/">Impressum</Link>
 						</div>
 					</div>
 				</div>

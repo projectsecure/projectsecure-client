@@ -37,6 +37,7 @@
 			width: 48px;
 			display: inline-block;
 			background-size: contain;
+			cursor: pointer;
 
 			&.badge-more {
 				background: url(../../../static/images/badge-more.png) center center no-repeat;

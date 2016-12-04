@@ -1,0 +1,26 @@
+.section-page-title {
+	width: 100%;
+	float:left;
+	background:#dac9b7 center bottom no-repeat;
+	background-size:100% auto;
+
+	& > .container {
+		padding-top: 180px;
+		padding-bottom: 60px;
+		position: relative;
+	}
+
+	h1 {
+		color:#fff;
+		font-size: 48px;
+		line-height: 48px;
+		font-weight: 500;
+	}
+
+}
+
+.section-page-content {
+	padding:50px 0px;
+	float:left;
+	width:100%;
+}
