@@ -1,4 +1,4 @@
-import LayoutBackend from '../../backend/components/layout';
+import LayoutBackend from '../../backend/containers/layout';
 
 require('../styles/challenge.scss');
 
@@ -90,8 +90,12 @@ class Challenge extends React.Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-8 offset-md-2">
-								{this.props.steps.map((step) => {
-									return this.getStepUI(step.type, step.options)
+								{this.props.steps.map((step, index) => {
+									return (
+										<div key={index}>
+											{this.getStepUI(step.type, step.options)}
+										</div>
+									);
 								})}
 							</div>
 						</div>

@@ -2,6 +2,7 @@ import {render} from 'react-dom';
 import {compose} from 'react-komposer';
 
 import component from '../components/challenge';
+import actions from '../actions/challenge';
 
 const composer = (props, onData) => {
 
@@ -22,7 +23,9 @@ const composer = (props, onData) => {
 					text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
 					label: 'Do something',
 					action: () => {
-						alert('YEAH');
+						request.get('https://api.github.com/repos/visionmedia/superagent').end((err, response) => {
+							console.log(response);
+						});
 					}
 				}
 			},
@@ -43,7 +46,7 @@ const composer = (props, onData) => {
 		]
 	};
 
-	onData(null, componentData);
+	onData(null, Object.assign(componentData, {actions}));
 };
 
 export default compose(composer)(component);

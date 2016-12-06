@@ -10,6 +10,10 @@ const composer = (props, onData) => {
 		actions
 	};
 
+	if(props.location.query.logout) {
+		actions.logout();
+	}
+
 	onData(null, componentData);
 };
 

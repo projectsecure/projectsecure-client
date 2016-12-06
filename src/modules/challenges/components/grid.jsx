@@ -23,9 +23,9 @@ class Grid extends React.Component {
 	getCardsUI() {
 		if(!this.props.challenges) return '';
 
-		return this.props.challenges.map((c) => {
+		return this.props.challenges.map((c, index) => {
 			return (
-				<div className="col-sm-4">
+				<div className="col-sm-4" key={index}>
 					<Card
 						title={c.title}
 						summary={c.summary}
