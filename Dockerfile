@@ -4,14 +4,16 @@ FROM node
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+# Bundle app source
+COPY . /usr/src/app
+
 # Install app dependencies
-COPY package.json /usr/src/app/
 RUN npm install
 RUN npm install webpack -g
 RUN webpack -p /usr/src/app/
 
-# Bundle app source
-COPY . /usr/src/app
+RUN ls
+RUN ls /usr/src/app/
 
 ENV NODE_ENV=production
 ENV PORT=4000
