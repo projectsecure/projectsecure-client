@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 # Install app dependencies
+RUN npm config set loglevel warn
 RUN npm install
 RUN npm install webpack -g
 RUN webpack -p /usr/src/app/
