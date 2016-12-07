@@ -12,9 +12,6 @@ RUN npm install
 RUN npm install webpack -g
 RUN webpack -p /usr/src/app/
 
-RUN ls
-RUN ls /usr/src/app/
-
 ENV NODE_ENV=production
 ENV PORT=4000
 
