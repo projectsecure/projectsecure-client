@@ -3,6 +3,8 @@ import LayoutBackend from '../../backend/containers/layout';
 import SectionProfile from './profile';
 import ChallengesGrid from '../../challenges/components/grid';
 
+import {Storage} from '../../core/helpers';
+
 require('../styles/dashboard.scss');
 
 class Dashboard extends React.Component {
@@ -36,12 +38,11 @@ class Dashboard extends React.Component {
 
 		return (
 			<LayoutBackend className="route-dashboard">
-				<SectionProfile />
+				<SectionProfile currentUser={this.props.currentUser} />
 				<ChallengesGrid challenges={challenges} title="Challenges fortsetzen" />
 			</LayoutBackend>
 		);
 	}
-
 }
 
 export default Dashboard;

@@ -1,11 +1,51 @@
 import {render} from 'react-dom';
 import {compose} from 'react-komposer';
 
+import userActions from '../../user/actions/user';
+
 import component from '../components/challenge';
 import actions from '../actions/challenge';
 
 const composer = (props, onData) => {
+	if(!userActions.checkAuth()) return;
 
+	let componentData = {};
+	console.log(localStorage.token);
+	request.get('http://localhost:8000/api/challenges/' + props.params.slug + '/steps').set('Authorization', 'JWT ' + localStorage.token).end((err, res) => {
+		if(err) {
+			throw new Error(err);
+		}
+
+		/*
+		let steps = (res.body || []).map((step) => {
+			return new Promise((resolve, reject) => {
+				request.get('http://localhost:8000/api/challenges/' + props.params.slug + '/steps/' + step.name).set('Authorization', 'JWT ' + localStorage.token).end((err, res) => {
+					console.log(res);
+					err ? reject(err) : resolve(res);
+				});
+			});
+		});
+
+
+		Promise.all(steps).then((steps) => {
+
+			console.log(steps);
+
+			componentData.challenge = res.body || [];
+			onData(null, componentData);
+		});
+		*/
+
+		componentData.steps = res.body || [];
+		onData(null, componentData);
+
+	});
+
+
+
+
+
+	/*
 	let componentData = {
 		title: 'Julius\' Mission',
 		steps: [
@@ -46,7 +86,9 @@ const composer = (props, onData) => {
 		]
 	};
 
+
 	onData(null, Object.assign(componentData, {actions}));
+	*/
 };
 
 export default compose(composer)(component);

@@ -8,7 +8,7 @@ export default [
 		component: Challenges
 	},
 	{
-		path: '/challenges/:name',
+		path: '/challenges/:slug',
 		name: 'challenge',
 		component: Challenge
 	}

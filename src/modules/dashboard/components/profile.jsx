@@ -6,7 +6,6 @@ class SectionProfile extends React.Component {
 
 	constructor(props) {
 		super(props);
-
 	}
 
 	getBadges(num) {
@@ -98,8 +97,6 @@ class SectionProfile extends React.Component {
 			);
 		}
 
-
-
 		return (
 			<section className="section-profile">
 				<div className="container">
@@ -107,7 +104,7 @@ class SectionProfile extends React.Component {
 						<div className="col-md-4">
 							<img className="img-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" />
 							<div className="user-info">
-								<span className="user-name">Lukas Müller</span><br />
+								<span className="user-name">{this.props.currentUser.username}</span><br />
 								<span className="user-stats">3000 Punkte</span>
 							</div>
 						</div>

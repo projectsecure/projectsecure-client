@@ -3,24 +3,19 @@ import {compose} from 'react-komposer';
 
 import {browserHistory} from 'react-router';
 
+import jwtDecode from 'jwt-decode';
+
 import component from '../components/layout';
 
-const composer = (props, onData) => {
+const composer = (props, onData, context) => {
 
 	let componentData = {};
 
-	// check if login
-	console.info('Check user auth');
+	console.log(this, props, context);
 
-	request.post('http://localhost:8000/api/auth/verify').send({token: localStorage.token}).end((err, res) => {
-		if(err) {
-			browserHistory.push('/login/?logout=1');
-		}
-
-		if((res.body || {}).token) {
-			onData(null, componentData);
-		}
-	});
+	onData(null, componentData);
 };
+
+
 
 export default compose(composer)(component);

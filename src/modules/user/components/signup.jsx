@@ -10,7 +10,7 @@ class Signup extends React.Component {
 	render() {
 		return (
 			<LayoutStatic className="route-signup">
-				<SectionForm role="signup" />
+				<SectionForm role="signup" onSubmit={this.props.actions.signup.bind(this)} />
 			</LayoutStatic>
 		);
 	}

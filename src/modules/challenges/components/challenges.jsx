@@ -11,31 +11,9 @@ class Challenges extends React.Component {
 	}
 
 	render() {
-		const challenges = [
-			{
-				title:'TOR',
-				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
-			},{
-				title:'TOR',
-				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
-			},{
-				title:'TOR',
-				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
-			},{
-				title:'TOR',
-				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
-			},{
-				title:'TOR',
-				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
-			},{
-				title:'TOR',
-				summary: 'At omnis fuga ridiculus eum asperiores, fringilla praesentium, diam per faucibus magna fugit molestiae pulvinar dolorem tempore nostrum suspendisse aenean! Quasi facere turpis?'
-			}
-		];
-
 		return (
 			<LayoutBackend className="route-dashboard">
-				<Grid challenges={challenges} title="Neue Challenges" />
+				<Grid challenges={this.props.challenges} title="Neue Challenges" />
 			</LayoutBackend>
 		);
 	}

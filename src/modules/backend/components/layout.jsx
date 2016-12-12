@@ -7,8 +7,8 @@ require('../styles/layout.scss');
 
 class LayoutBackend extends React.Component {
 
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 	}
 
 	render() {
@@ -20,7 +20,6 @@ class LayoutBackend extends React.Component {
 			</Layout>
 		);
 	}
-
 }
 
 export default LayoutBackend;

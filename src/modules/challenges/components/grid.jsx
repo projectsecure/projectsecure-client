@@ -28,7 +28,8 @@ class Grid extends React.Component {
 				<div className="col-sm-4" key={index}>
 					<Card
 						title={c.title}
-						summary={c.summary}
+						description={c.description}
+						path={c.path}
 					/>
 				</div>
 			);

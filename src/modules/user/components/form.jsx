@@ -9,6 +9,7 @@ class SectionForm extends React.Component {
 		super(props);
 
 		this.state = {
+			username: '',
 			email: '',
 			password: '',
 			displayColorPicker: false,
@@ -91,7 +92,6 @@ class SectionForm extends React.Component {
 
 
 
-
 	handleFieldChange(key, event) {
 		let newState = this.state || {};
 		newState[key] = event.target.value;
@@ -99,10 +99,12 @@ class SectionForm extends React.Component {
 		this.setState(newState);
 	}
 
-	handleLogin(e) {
-		this.props.actions.login.bind(this)({
+	handleSubmit(e) {
+		this.props.onSubmit({
+			username: this.state.username,
 			email: this.state.email,
-			password: this.state.password
+			password: this.state.password,
+			color: this.state.color
 		});
 	}
 
@@ -118,14 +120,14 @@ class SectionForm extends React.Component {
 		if(this.props.role == 'login') {
 			return (
 				<div>
-					<input type="text" className="form-control form-control-lg" placeholder="E-Mail-Adresse" onChange={this.handleFieldChange.bind(this, 'email')} />
+					<input type="text" className="form-control form-control-lg" placeholder="Benutzername" onChange={this.handleFieldChange.bind(this, 'username')} />
 					<input type="password" className="form-control form-control-lg" placeholder="Passwort" onChange={this.handleFieldChange.bind(this, 'password')} />
 				</div>
 			);
 		} else {
 			return (
 				<div>
-					<input type="text" className="form-control form-control-lg" placeholder="Name" onChange={this.handleFieldChange.bind(this, 'name')} />
+					<input type="text" className="form-control form-control-lg" placeholder="Benutzername" onChange={this.handleFieldChange.bind(this, 'username')} />
 					{this.getColorPickerUI()}
 					<input type="text" className="form-control form-control-lg" placeholder="E-Mail-Adresse" onChange={this.handleFieldChange.bind(this, 'email')} />
 					<input type="password" className="form-control form-control-lg" placeholder="Passwort" onChange={this.handleFieldChange.bind(this, 'password')} />
@@ -136,7 +138,7 @@ class SectionForm extends React.Component {
 
 	getButtonUI() {
 		return (
-			<button className="btn btn-primary btn-uppercase btn-block btn-lg" onClick={this.handleLogin.bind(this)}>
+			<button className="btn btn-primary btn-uppercase btn-block btn-lg" onClick={this.handleSubmit.bind(this)}>
 				{(this.props.role == 'login') ? 'Einloggen' : 'Registrieren'}
 			</button>
 		);

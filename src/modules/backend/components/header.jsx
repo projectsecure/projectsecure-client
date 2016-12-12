@@ -29,7 +29,7 @@ class HeaderBackend extends React.Component {
 										</button>
 										<div className="dropdown-menu dropdown-menu-right">
 											<Link className="dropdown-item" to="/settings/">Einstellungen</Link>
-											<Link className="dropdown-item" to="/login/">Logout</Link>
+											<Link className="dropdown-item" to="/login/?logout=1">Logout</Link>
 										</div>
 									</div>
 								</li>

@@ -1,14 +1,16 @@
 
 import {render} from 'react-dom';
-import {compose} from 'react-komposer';
+import { composeWithStore } from '../../core/helpers/storage';
 
 import component from '../components/home';
 import actions from '../actions/home';
 
-const composer = (props, onData) => {
-	onData(null, {
-		actions
-	});
+const composer = (props, onData, context) => {
+	onData(null, Object.assign(
+		{},
+		{actions},
+		context.getState().userState
+	));
 };
 
-export default compose(composer)(component);
+export default composeWithStore(composer)(component);

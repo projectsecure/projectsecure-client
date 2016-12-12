@@ -9,6 +9,21 @@ class Header extends React.Component {
 	}
 
 	render() {
+		let continueButton;
+		if(this.props.currentUser) {
+			continueButton = (
+				<Link className="signup nav-link btn btn-primary" to="/dashboard/">
+					Zum Dashboard
+				</Link>
+			);
+		} else {
+			continueButton = (
+				<Link className="signup nav-link btn btn-primary" to="/login/">
+					Login
+				</Link>
+			);
+		}
+
 		return (
 			<header>
 				<div className="container">
@@ -23,9 +38,7 @@ class Header extends React.Component {
 									<Link className="nav-link" to="/contact/">Kontakt</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="signup nav-link btn btn-primary" to="/login/">
-										Login
-									</Link>
+									{continueButton}
 								</li>
 							</ul>
 						</nav>
