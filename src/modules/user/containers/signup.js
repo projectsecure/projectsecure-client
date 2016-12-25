@@ -1,7 +1,7 @@
 import {render} from 'react-dom';
 import {compose} from 'react-komposer';
 
-import loginActions from '../actions/login'
+import loginActions from '../actions/login';
 
 import component from '../components/signup';
 import actions from '../actions/signup';

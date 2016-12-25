@@ -22,14 +22,14 @@ app.onInit(
 				store.dispatch({
 					type: 'CURRENT_USER',
 					currentTokenUser: false
-				})
+				});
 				resolve(err);
 			} else {
 				if ((res.body || {}).token) {
 					store.dispatch({
 						type: 'CURRENT_USER',
 						currentTokenUser: jwtDecode(res.body.token)
-					})
+					});
 				}
 				resolve(res);
 			}

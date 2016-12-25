@@ -14,10 +14,10 @@ export default {
 		const data = {};
 		return new Promise((resolve, reject) => {
 			request.post(`challenges/${challengeName}/start`)
-			 .end(() => {
-				 // always try to start the challenge and ignore if already started
-			 	resolve(true)
-			 });
+				.end(() => {
+					// always try to start the challenge and ignore if already started
+					resolve(true);
+				});
 		}).then(() => {
 			return new Promise((resolve, reject) => {
 				request.get(`challenges/${challengeName}`)
@@ -68,8 +68,8 @@ export default {
 						reject(err);
 					}
 
-					resolve(res)
+					resolve(res);
 				});
 		});
 	}
-}
+};

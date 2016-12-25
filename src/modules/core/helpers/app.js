@@ -71,7 +71,7 @@ export default class App {
 				throw new Error(err);
 			});
 		} else {
-			return new Promise((resolve) => {resolve(this._init())});
+			return new Promise((resolve) => {resolve(this._init());});
 		}
 	}
 

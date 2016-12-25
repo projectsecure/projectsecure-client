@@ -42,4 +42,4 @@ export default {
 				.set('Authorization', 'JWT ' + localStorage.token)
 		);
 	}
-}
+};

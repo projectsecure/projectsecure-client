@@ -13,8 +13,8 @@ export default {
 					return c;
 				});
 
-				resolve(challenges)
+				resolve(challenges);
 			});
 		});
 	}
-}
+};

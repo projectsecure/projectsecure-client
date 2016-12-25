@@ -57,9 +57,7 @@ var config = {
 			"window.Tether": 'tether',
 			tether: 'tether',
 			Tether: 'tether',
-			'React': 'react',
-			/*superagent: 'superagent',
-			request: 'superagent'*/
+			'React': 'react'
 		})
 	]
 };

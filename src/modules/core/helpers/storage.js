@@ -4,7 +4,7 @@ import { createStore, combineReducers } from 'redux';
 const userReducer = function(state = {}, action) {
 	let newState = Object.assign({}, state, {currentTokenUser: action.currentTokenUser});
 	return newState;
-}
+};
 
 const reducers = combineReducers({
 	userState: userReducer
