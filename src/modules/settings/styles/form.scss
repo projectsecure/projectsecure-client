@@ -6,8 +6,21 @@
 	background: #dac9b7;
 	padding: 50px 0px;
 
+	.spacing {
+		height:50px;
+		width:100%;
+		display: block;
+	}
+
 	.field-avatar {
-		line-height:128px;
+
+		label {
+			padding-top: 30px;
+
+			span {
+				font-weight:500;
+			}
+		}
 
 		.img-avatar {
 			border-radius:50%;
@@ -15,7 +28,11 @@
 			height:128px;
 			margin-right:20px;
 			border:3px solid #fff;
-			float: left;
+			text-align: center;
+		}
+
+		.img-avatar-wrapper {
+			text-align:center;
 		}
 	}
 

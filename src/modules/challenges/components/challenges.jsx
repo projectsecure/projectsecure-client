@@ -13,7 +13,7 @@ class Challenges extends React.Component {
 	render() {
 		return (
 			<LayoutBackend className="route-dashboard">
-				<Grid challenges={this.props.challenges} title="Neue Challenges" />
+				<Grid challenges={this.props.challenges} title="Alle Challenges" />
 			</LayoutBackend>
 		);
 	}

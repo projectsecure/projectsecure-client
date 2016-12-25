@@ -105,7 +105,7 @@ class SectionProfile extends React.Component {
 							<img className="img-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" />
 							<div className="user-info">
 								<span className="user-name">{this.props.currentUser.username}</span><br />
-								<span className="user-stats">3000 Punkte</span>
+								<span className="user-stats">8 Badges</span>
 							</div>
 						</div>
 						<div className="col-md-8">

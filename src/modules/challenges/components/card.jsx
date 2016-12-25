@@ -8,6 +8,20 @@ class ChallengeCard extends React.Component {
 		super(props);
 	}
 
+	getButtonLabel(status) {
+		switch(status) {
+			case 'IN_PROGRESS': {
+				return 'Fortsetzen';
+			}
+			case 'COMPLETED': {
+				return 'Ansehen'
+			}
+			default: {
+				return 'Jetzt loslegen';
+			}
+		}
+	}
+
 	render() {
 		return (
 			<div className="card challenge-card">
@@ -19,7 +33,7 @@ class ChallengeCard extends React.Component {
 				</div>
 				<div className="card-block">
 					<p className="card-text">{this.props.description}</p>
-					<Link className="btn btn-uppercase btn-primary btn-block" to={this.props.path}>Jetzt loslegen</Link>
+					<Link className="btn btn-uppercase btn-primary btn-block" to={this.props.path}>{this.getButtonLabel(this.props.status)}</Link>
 				</div>
 			</div>
 		);

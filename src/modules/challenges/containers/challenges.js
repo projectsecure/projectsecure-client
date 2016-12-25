@@ -2,6 +2,7 @@ import {render} from 'react-dom';
 import {compose} from 'react-komposer';
 
 import userActions from '../../user/actions/user';
+import actions from '../actions/challenges';
 
 import component from '../components/challenges';
 
@@ -10,18 +11,8 @@ const composer = (props, onData, context) => {
 
 	let componentData = {};
 
-	request.get('http://localhost:8000/api/challenges').end((err, res) => {
-		if(err) {
-			throw new Error(err);
-		}
-
-		componentData.challenges = res.body || [];
-
-		componentData.challenges = componentData.challenges.map((c) => {
-			c.path = `/challenges/${c.slug}/`;
-			return c;
-		});
-
+	actions.getChallenges().then((challenges) => {
+		componentData.challenges = challenges;
 		onData(null, componentData);
 	});
 };

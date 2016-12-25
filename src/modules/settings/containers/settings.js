@@ -10,7 +10,10 @@ const composer = (props, onData) => {
 
 	let componentData = {};
 
-	onData(null, componentData);
+	userActions.getCurrentUser().then((user) => {
+		componentData.user = user;
+		onData(null, componentData);
+	});
 };
 
 export default compose(composer)(component);

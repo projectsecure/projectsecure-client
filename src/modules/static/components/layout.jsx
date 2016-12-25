@@ -12,7 +12,7 @@ class LayoutStatic extends React.Component {
 	render() {
 		return (
 			<Layout className={this.props.className}>
-				<Header currentUser={this.props.currentUser} />
+				<Header currentUser={this.props.currentUser} isLoggedIn={this.props.isLoggedIn} />
 				<div>
 					{this.props.children}
 				</div>

@@ -20,14 +20,14 @@ app.onInit(
 			if(err) {
 				store.dispatch({
 					type: 'CURRENT_USER',
-					currentUser: false
+					currentTokenUser: false
 				})
 				resolve(err);
 			} else {
 				if ((res.body || {}).token) {
 					store.dispatch({
 						type: 'CURRENT_USER',
-						currentUser: jwtDecode(res.body.token)
+						currentTokenUser: jwtDecode(res.body.token)
 					})
 				}
 				resolve(res);

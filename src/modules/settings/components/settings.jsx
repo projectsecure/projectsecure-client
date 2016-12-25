@@ -12,7 +12,7 @@ class Settings extends React.Component {
 	render() {
 		return (
 			<LayoutBackend className="route-settings">
-				<SectionForm />
+				<SectionForm {...this.props} />
 			</LayoutBackend>
 		);
 	}

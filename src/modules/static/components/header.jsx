@@ -10,7 +10,7 @@ class Header extends React.Component {
 
 	render() {
 		let continueButton;
-		if(this.props.currentUser) {
+		if(this.props.isLoggedIn) {
 			continueButton = (
 				<Link className="signup nav-link btn btn-primary" to="/dashboard/">
 					Zum Dashboard

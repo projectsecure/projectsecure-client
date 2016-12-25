@@ -1,17 +1,16 @@
-import {browserHistory} from 'react-router';
-import LoginActions from './login';
-
 export default {
 	signup: ({username, email, password, color}) => {
-		request.post('http://localhost:8000/api/users/register').send({
-			username,
-			email,
-			password,
-			color
-		}).end((err, res) => {
-			if(err) throw new Error(err);
+		return new Promise((resolve, reject) => {
+			request.post('http://localhost:8000/api/users/register').send({
+				username,
+				email,
+				password,
+				color
+			}).end((err, res) => {
+				if(err) reject(err);
 
-			LoginActions.login({username, password})
+				resolve(true);
+			});
 		});
 	}
 };

@@ -2,7 +2,7 @@ import { compose, setDefaults } from 'react-komposer';
 import { createStore, combineReducers } from 'redux';
 
 const userReducer = function(state = {}, action) {
-	let newState = Object.assign({}, state, {currentUser: action.currentUser});
+	let newState = Object.assign({}, state, {currentTokenUser: action.currentTokenUser});
 	return newState;
 }
 

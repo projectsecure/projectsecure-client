@@ -1,4 +1,4 @@
-import LayoutStatic from '../../static/components/layout';
+import LayoutStatic from '../../static/containers/layout';
 
 import SectionPageTitle from '../../static/components/page-title';
 import SectionPageContent from '../../static/components/page-content';

@@ -13,8 +13,8 @@ class LayoutBackend extends React.Component {
 
 	render() {
 		return (
-			<Layout {...this.props}>
-				<HeaderBackend />
+			<Layout className={this.props.className}>
+				<HeaderBackend currentUser={this.props.currentUser} />
 				{this.props.children}
 				<Footer />
 			</Layout>

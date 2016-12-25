@@ -8,12 +8,13 @@ class SectionForm extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
+		this.state = Object.assign({
 			email: '',
 			password: '',
 			displayColorPicker: false,
 			color: '',
-		}
+			username: ''
+		}, this.props.user);
 	}
 
 	colorPickerHandleClick()  {
@@ -123,17 +124,25 @@ class SectionForm extends React.Component {
 						<div className="col-sm-8 offset-sm-2">
 
 							<div className="form-group row field-avatar">
-								<label className="col-xs-3 col-form-label">Anzeigebild</label>
-								<div className="col-xs-9">
-									<img className="img-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" />
-									<a href="">Bild entfernen</a>
+								<label className="col-xs-3 col-form-label">Anzeigebild
+									<br /><span>(via <a href="">gravatar.com</a>)</span>
+								</label>
+								<div className="col-xs-9 img-avatar-wrapper">
+									<img className="img-avatar"
+										 src="https://randomuser.me/api/portraits/men/11.jpg" />
 								</div>
 							</div>
 
+							<div className="spacing"></div>
+
 							<div className="form-group row">
-								<label className="col-xs-3 col-form-label">Name</label>
+								<label className="col-xs-3 col-form-label">Benutzername</label>
 								<div className="col-xs-9">
-									<input type="text" className="form-control form-control-lg" placeholder="Name" onChange={this.handleFieldChange.bind(this, 'name')} />
+									<input type="text"
+										   className="form-control form-control-lg"
+										   placeholder="Name"
+										   value={this.state.username}
+										   onChange={this.handleFieldChange.bind(this, 'username')} />
 								</div>
 							</div>
 							<div className="form-group row">
@@ -143,28 +152,44 @@ class SectionForm extends React.Component {
 								</div>
 							</div>
 							<div className="form-group row">
-								<label className="col-xs-3 col-form-label">E-Mail</label>
+								<label className="col-xs-3 col-form-label">E-Mail-Adresse</label>
 								<div className="col-xs-9">
-									<input type="text" className="form-control form-control-lg" placeholder="E-Mail-Adresse" onChange={this.handleFieldChange.bind(this, 'email')} />
+									<input type="text"
+										   className="form-control form-control-lg"
+										   placeholder="E-Mail-Adresse"
+										   value={this.state.email}
+										   onChange={this.handleFieldChange.bind(this, 'email')} />
+								</div>
+							</div>
+
+							<div className="spacing"></div>
+
+							<div className="form-group row">
+								<label className="col-xs-3 col-form-label">Neues Passwort</label>
+								<div className="col-xs-9">
+									<input type="password"
+										   className="form-control form-control-lg"
+										   placeholder="Passwort"
+										   onChange={this.handleFieldChange.bind(this, 'password')} />
 								</div>
 							</div>
 							<div className="form-group row">
-								<label className="col-xs-3 col-form-label">Passwort</label>
+								<label className="col-xs-3 col-form-label">Neues Passwort wiederholen</label>
 								<div className="col-xs-9">
-									<input type="password" className="form-control form-control-lg" placeholder="Passwort" onChange={this.handleFieldChange.bind(this, 'password')} />
-								</div>
-							</div>
-							<div className="form-group row">
-								<label className="col-xs-3 col-form-label">Passwort wiederholen</label>
-								<div className="col-xs-9">
-									<input type="password" className="form-control form-control-lg" placeholder="Passwort" onChange={this.handleFieldChange.bind(this, 'password')} />
+									<input type="password"
+										   className="form-control form-control-lg"
+										   placeholder="Passwort"
+										   onChange={this.handleFieldChange.bind(this, 'password')} />
 								</div>
 							</div>
 
 							<div className="form-group row">
 								<label className="col-xs-3 col-form-label"></label>
 								<div className="col-xs-9">
-									<button className="btn btn-primary btn-uppercase btn-block btn-lg btn-save" onClick={this.handleLogin.bind(this)}>Speichern</button>
+									<button className="btn btn-primary btn-uppercase btn-block btn-lg btn-save"
+											onClick={this.handleLogin.bind(this)}>
+										Speichern
+									</button>
 								</div>
 							</div>
 
@@ -181,7 +206,10 @@ class SectionForm extends React.Component {
 							<div className="form-group row">
 								<label className="col-xs-3 col-form-label">Account löschen</label>
 								<div className="col-xs-9">
-									<button className="btn btn-danger btn-uppercase" onClick={this.handleLogin.bind(this)}>Account löschen</button>
+									<button className="btn btn-danger btn-uppercase"
+											onClick={this.handleLogin.bind(this)}>
+										Account löschen
+									</button>
 								</div>
 							</div>
 						</div>

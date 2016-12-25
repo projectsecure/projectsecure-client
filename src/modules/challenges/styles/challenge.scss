@@ -6,11 +6,15 @@
 	padding: 60px 0px 30px;
 	background: $color-beige;
 
-	.card-step {
+	.with-border {
 		border-top:1px solid #eee;
 	}
 
 	h2 {
 		margin-bottom:0px;
+	}
+
+	.padding-right {
+		padding-right:10px !important;
 	}
 }
