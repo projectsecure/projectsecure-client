@@ -1,5 +1,5 @@
 import SectionForm from './form';
-import LayoutStatic from '../../static/components/layout';
+import LayoutStatic from '../../static/containers/layout';
 
 class Signup extends React.Component {
 

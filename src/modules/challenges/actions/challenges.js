@@ -1,7 +1,9 @@
+import request from '../../core/helpers/request';
+
 export default {
 	getChallenges() {
 		return new Promise((resolve, reject) => {
-			request.get('http://localhost:8000/api/challenges').end((err, res) => {
+			request.get('challenges').end((err, res) => {
 				if(err) {
 					reject(err);
 				}

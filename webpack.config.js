@@ -58,8 +58,8 @@ var config = {
 			tether: 'tether',
 			Tether: 'tether',
 			'React': 'react',
-			superagent: 'superagent',
-			request: 'superagent'
+			/*superagent: 'superagent',
+			request: 'superagent'*/
 		})
 	]
 };

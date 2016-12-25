@@ -1,7 +1,9 @@
+import request from '../../core/helpers/request';
+
 export default {
 	signup: ({username, email, password, color}) => {
 		return new Promise((resolve, reject) => {
-			request.post('http://localhost:8000/api/users/register').send({
+			request.post('users/register').send({
 				username,
 				email,
 				password,

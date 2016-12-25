@@ -1,8 +1,9 @@
+import request from '../../core/helpers/request';
+
 export default {
 	updateStep(challengeName, stepName, data) {
 		request
-			.put(`http://127.0.0.1:8000/api/challenges/${challengeName}/steps/${stepName}`)
-			.set('Authorization', 'JWT ' + localStorage.token)
+			.put(`challenges/${challengeName}/steps/${stepName}`)
 			.send(data)
 			.end((res) => {
 				console.log(res);
@@ -12,16 +13,14 @@ export default {
 	getChallenge(challengeName) {
 		const data = {};
 		return new Promise((resolve, reject) => {
-			request.post(`http://localhost:8000/api/challenges/${challengeName}/start`)
-			 .set('Authorization', 'JWT ' + localStorage.token)
+			request.post(`challenges/${challengeName}/start`)
 			 .end(() => {
 				 // always try to start the challenge and ignore if already started
 			 	resolve(true)
 			 });
 		}).then(() => {
 			return new Promise((resolve, reject) => {
-				request.get(`http://localhost:8000/api/challenges/${challengeName}`)
-					.set('Authorization', 'JWT ' + localStorage.token)
+				request.get(`challenges/${challengeName}`)
 					.end((err, res) => {
 						if(err) throw new Error(err);
 
@@ -33,8 +32,7 @@ export default {
 			});
 		}).then(() => {
 			return new Promise((resolve, reject) => {
-				request.get(`http://localhost:8000/api/challenges/${challengeName}/steps`)
-					.set('Authorization', 'JWT ' + localStorage.token)
+				request.get(`challenges/${challengeName}/steps`)
 					.end((err, res) => {
 						if(err) throw new Error(err);
 
@@ -64,8 +62,7 @@ export default {
 	completeChallenge(challengeName) {
 		return new Promise((resolve, reject) => {
 			request
-				.post(`http://127.0.0.1:8000/api/challenges/${challengeName}/complete`)
-				.set('Authorization', 'JWT ' + localStorage.token)
+				.post(`challenges/${challengeName}/complete`)
 				.end((err, res) => {
 					if(err) {
 						reject(err);

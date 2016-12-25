@@ -4,14 +4,14 @@ import jwtDecode from 'jwt-decode';
 import loginActions from './login';
 
 import {store} from '../../core/helpers/storage';
+import request from '../../core/helpers/request';
 
 const actions = {
 	updateUser(data) {
 		// TODO: use user endpoint when available
 	},
 
-	checkAuth: (redirect = true) => {
-		console.log(store.getState().userState);
+	checkAuth: () => {
 		if(!store.getState().userState.currentTokenUser) {
 			// TODO: Refactor to don't have redirect here
 			//if(redirect) loginActions.logout();
@@ -24,8 +24,7 @@ const actions = {
 	getCurrentUser: () => {
 		return new Promise((resolve, reject) => {
 			request
-				.get('http://localhost:8000/api/users/me')
-				.set('Authorization', 'JWT ' + localStorage.token)
+				.get('users/me')
 				.end((err, res) => {
 					const user = res.body || {};
 					resolve(user);

@@ -2,11 +2,12 @@ import {browserHistory} from 'react-router';
 import jwtDecode from 'jwt-decode';
 
 import {store} from '../../core/helpers/storage';
+import request from '../../core/helpers/request';
 
 export default {
 	login: ({username, password}) => {
 		return new Promise((resolve, reject) => {
-			request.post('http://localhost:8000/api/auth/login').send({
+			request.post('auth/login').send({
 				username,
 				password
 			}).end((err, res) => {

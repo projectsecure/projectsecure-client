@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode';
 
 import {App, Storage} from './modules/core/helpers';
 import {store} from './modules/core/helpers/storage';
+import request from './modules/core/helpers/request';
 
 import modules from './modules';
 
@@ -16,7 +17,7 @@ app.loadModules(Object.values(modules));
 app.onInit(
 	new Promise((resolve, reject) => {
 		console.info('Get user auth state');
-		request.post('http://localhost:8000/api/auth/verify').send({token: localStorage.token}).end((err, res) => {
+		request.post('auth/verify').send({token: localStorage.token}).end((err, res) => {
 			if(err) {
 				store.dispatch({
 					type: 'CURRENT_USER',
