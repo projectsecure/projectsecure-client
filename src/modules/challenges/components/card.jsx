@@ -33,7 +33,9 @@ class ChallengeCard extends React.Component {
 				</div>
 				<div className="card-block">
 					<p className="card-text">{this.props.description}</p>
-					<Link className="btn btn-uppercase btn-primary btn-block" to={this.props.path}>{this.getButtonLabel(this.props.status)}</Link>
+					<Link className="btn btn-uppercase btn-primary btn-block" to={this.props.path}>
+						{this.getButtonLabel(this.props.status)}
+					</Link>
 				</div>
 			</div>
 		);
