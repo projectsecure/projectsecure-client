@@ -13,6 +13,7 @@ const composer = (props, onData, context) => {
 	userActions.getCurrentUser().then((user) => {
 		componentData.currentUser = user;
 		componentData.isLoggedIn = !!user.username;
+
 		onData(null, componentData);
 	});
 };

@@ -1,5 +1,4 @@
 import {Link} from 'react-router';
-import gravatar from 'gravatar';
 
 require('../styles/profile.scss');
 
@@ -104,7 +103,7 @@ class SectionProfile extends React.Component {
 					<div className="row">
 						<div className="col-md-4">
 							<img className="img-avatar"
-								 src={gravatar.url(this.props.currentUser.email)} />
+								 src={this.props.currentUser.image} />
 							<div className="user-info">
 								<span className="user-name">{this.props.currentUser.username}</span><br />
 								<span className="user-stats">8 Badges</span>

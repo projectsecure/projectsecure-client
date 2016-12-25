@@ -61,11 +61,11 @@ class SectionForm extends React.Component {
 
 							<div className="form-group row field-avatar">
 								<label className="col-xs-3 col-form-label">Anzeigebild
-									<br /><span>(via <a href="">gravatar.com</a>)</span>
+									<br /><span>(via <a href="http://gravatar.com">gravatar.com</a>)</span>
 								</label>
 								<div className="col-xs-9 img-avatar-wrapper">
 									<img className="img-avatar"
-										 src="https://randomuser.me/api/portraits/men/11.jpg" />
+										 src={this.props.user.image} />
 								</div>
 							</div>
 

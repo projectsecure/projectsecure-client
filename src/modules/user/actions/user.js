@@ -1,5 +1,6 @@
 import {browserHistory} from 'react-router';
 import jwtDecode from 'jwt-decode';
+import gravatar from 'gravatar';
 
 import loginActions from './login';
 
@@ -12,13 +13,13 @@ const actions = {
 	},
 
 	checkAuth: () => {
-		if(!store.getState().userState.currentTokenUser) {
-			// TODO: Refactor to don't have redirect here
-			//if(redirect) loginActions.logout();
-			return false;
-		} else {
-			return true;
-		}
+		return new Promise((resolve, reject) => {
+			if (store.getState().userState.currentTokenUser) {
+				return resolve(true);
+			} else {
+				return reject(false);
+			}
+		});
 	},
 
 	getCurrentUser: () => {
@@ -27,6 +28,12 @@ const actions = {
 				.get('users/me')
 				.end((err, res) => {
 					const user = res.body || {};
+
+					user.image = gravatar.url(user.email, {
+						s: 200,
+						d: 'mm'
+					});
+
 					resolve(user);
 				});
 			});
