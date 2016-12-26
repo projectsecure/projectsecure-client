@@ -42,8 +42,8 @@ class Challenge extends React.Component {
 		}
 
 		return (
-			<div className="card">
-				<div className="card-block">
+			<div className={`card ${this.isActiveStep('finish') ? 'card-active' : ''}`}>
+				<div className='card-block'>
 					{finishActionUI}
 				</div>
 			</div>
@@ -77,10 +77,28 @@ class Challenge extends React.Component {
 		);
 	}
 
-	getStepTextUI(stepName, {title, text}) {
+	isActiveStep(stepName) {
+		if(this.props.status == 'COMPLETED') {
+			return false;
+		}
+
+		let activeStep = (this.props.steps || []).find((step) => {
+			return step.status && step.status != 'COMPLETED';
+		});
+
+		if(!activeStep) {
+			activeStep = {
+				name: 'finish'
+			}
+		}
+
+		return activeStep.name == stepName;
+	}
+
+	getStepTextUI(stepName, status, {title, text}) {
 		return (
 			<div>
-				<div className="card-block card-step">
+				<div className='card-block'>
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
 				</div>
@@ -88,19 +106,21 @@ class Challenge extends React.Component {
 		);
 	}
 
-	getStepButtonUI(stepName, {label, title, text}) {
+	getStepButtonUI(stepName, status, {label, title, text}) {
 		return (
 			<div>
-				<div className="card-block card-step">
+				<div className='card-block'>
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
-					<button className="btn btn-primary" onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, null)}>{label}</button>
+					<button className="btn btn-primary"
+							onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, null)}
+							disabled={(status == 'COMPLETED')}>{label}</button>
 				</div>
 			</div>
 		);
 	}
 
-	getStepInputUI(stepName, {
+	getStepInputUI(stepName, status, {
 		button_title,
 		input_title,
 		placeholder,
@@ -119,7 +139,7 @@ class Challenge extends React.Component {
 
 		return (
 			<div>
-				<div className="card-block card-step">
+				<div className='card-block'>
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
 					<div className="form-group">
@@ -135,7 +155,8 @@ class Challenge extends React.Component {
 						<div className="col-xs-2 no-padding">
 							<button
 								className="btn btn-primary btn-block btn-uppercase"
-								onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, {input: this.state.input})}>
+								onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, {input: this.state.input})}
+								disabled={(status == 'COMPLETED')}>
 								{button_title}
 							</button>
 						</div>
@@ -146,7 +167,7 @@ class Challenge extends React.Component {
 	}
 
 
-	getStepUI({name, type, options}) {
+	getStepUI({name, type, options, status}) {
 		let content;
 		switch(type) {
 			case 'TextStep':
@@ -164,8 +185,8 @@ class Challenge extends React.Component {
 
 		if(content) {
 			return (
-				<div className="card">
-					{content(name, options)}
+				<div className={`card ${this.isActiveStep(name) ? 'card-active' : ''}`}>
+					{content(name, status, options)}
 				</div>
 			)
 		}
