@@ -32,7 +32,7 @@ const composer = (props, onData) => {
 				componentData = Object.assign(componentData, data);
 				onData(null, componentData);
 			});
-		}
+		};
 
 		loadChallenge();
 

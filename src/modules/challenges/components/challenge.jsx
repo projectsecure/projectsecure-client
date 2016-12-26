@@ -43,7 +43,7 @@ class Challenge extends React.Component {
 
 		return (
 			<div className={`card ${this.isActiveStep('finish') ? 'card-active' : ''}`}>
-				<div className='card-block'>
+				<div className="card-block card-step">
 					{finishActionUI}
 				</div>
 			</div>
@@ -98,7 +98,7 @@ class Challenge extends React.Component {
 	getStepTextUI(stepName, status, {title, text}) {
 		return (
 			<div>
-				<div className='card-block'>
+				<div className="card-block card-step">
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
 				</div>
@@ -109,7 +109,7 @@ class Challenge extends React.Component {
 	getStepButtonUI(stepName, status, {label, title, text}) {
 		return (
 			<div>
-				<div className='card-block'>
+				<div className="card-block card-step">
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
 					<button className="btn btn-primary"
@@ -139,7 +139,7 @@ class Challenge extends React.Component {
 
 		return (
 			<div>
-				<div className='card-block'>
+				<div className="card-block card-step">
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
 					<div className="form-group">

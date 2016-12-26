@@ -42,8 +42,6 @@ export default {
 
 						challenge.allStepsCompleted = allStepsCompleted;
 
-						console.log(challenge);
-
 						return resolve(challenge);
 					});
 			});
