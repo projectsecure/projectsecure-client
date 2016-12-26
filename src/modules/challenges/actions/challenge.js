@@ -6,7 +6,8 @@ export default {
 			.put(`challenges/${challengeName}/steps/${stepName}`)
 			.send(data)
 			.end((res) => {
-				console.log(res);
+				//console.log(res);
+				// TODO: do something with output
 			});
 	},
 

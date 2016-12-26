@@ -14,10 +14,10 @@ const actions = {
 
 	checkAuth: () => {
 		return new Promise((resolve, reject) => {
-			if (store.getState().userState.currentTokenUser) {
-				return resolve(true);
+			if(store.getState().userState.currentTokenUser) {
+				return resolve();
 			} else {
-				return reject(false);
+				return reject();
 			}
 		});
 	},

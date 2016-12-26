@@ -106,7 +106,7 @@ class SectionProfile extends React.Component {
 								 src={this.props.currentUser.image} />
 							<div className="user-info">
 								<span className="user-name">{this.props.currentUser.username}</span><br />
-								<span className="user-stats">8 Badges</span>
+								<span className="user-stats">{this.getBadges().length} Badges</span>
 							</div>
 						</div>
 						<div className="col-md-8">

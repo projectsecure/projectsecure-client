@@ -16,7 +16,7 @@ app.loadModules(Object.values(modules));
 
 app.onInit(
 	new Promise((resolve, reject) => {
-		console.info('Get user auth state');
+		//console.info('Get user auth state');
 		request.post('auth/verify').send({token: localStorage.token}).end((err, res) => {
 			if(err) {
 				store.dispatch({
