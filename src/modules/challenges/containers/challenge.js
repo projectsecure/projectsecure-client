@@ -19,13 +19,23 @@ const composer = (props, onData) => {
 				actions.completeChallenge(challengeName).then(() => {
 					browserHistory.push('/dashboard/');
 				});
+			},
+			onUpdateStep: (challengeName, stepName, data) => {
+				actions.updateStep(challengeName, stepName, data).then(() => {
+					loadChallenge();
+				});
 			}
 		};
 
-		actions.getChallenge(challengeName).then((data) => {
-			componentData = Object.assign(componentData, data);
-			onData(null, componentData);
-		});
+		const loadChallenge = () => {
+			actions.getChallenge(challengeName).then((data) => {
+				componentData = Object.assign(componentData, data);
+				onData(null, componentData);
+			});
+		}
+
+		loadChallenge();
+
 
 	}).catch(() => {
 		loginActions.logout().then(() => {

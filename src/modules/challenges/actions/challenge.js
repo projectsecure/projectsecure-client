@@ -2,59 +2,49 @@ import request from '../../core/helpers/request';
 
 export default {
 	updateStep(challengeName, stepName, data) {
-		request
-			.put(`challenges/${challengeName}/steps/${stepName}`)
-			.send(data)
-			.end((res) => {
-				//console.log(res);
-				// TODO: do something with output
-			});
+		return new Promise((resolve, reject) => {
+			request
+				.put(`challenges/${challengeName}/steps/${stepName}`)
+				.send(data)
+				.end((res) => {
+					resolve(res);
+				});
+		});
 	},
 
-	getChallenge(challengeName) {
-		const data = {};
+	getChallenge(challengeName, start = true) {
+		let challenge = {};
 		return new Promise((resolve, reject) => {
-			request.post(`challenges/${challengeName}/start`)
-				.end(() => {
-					// always try to start the challenge and ignore if already started
-					resolve(true);
-				});
+			if(start) {
+				request.post(`challenges/${challengeName}/start`)
+					.end(() => {
+						// always try to start the challenge and ignore if already started
+						resolve(true);
+					});
+			} else {
+				resolve(true);
+			}
 		}).then(() => {
 			return new Promise((resolve, reject) => {
 				request.get(`challenges/${challengeName}`)
 					.end((err, res) => {
 						if(err) throw new Error(err);
 
-						data.challenge = res.body || {};
-						data.challenge.name = challengeName;
-
-						return resolve(res);
-					});
-			});
-		}).then(() => {
-			return new Promise((resolve, reject) => {
-				request.get(`challenges/${challengeName}/steps`)
-					.end((err, res) => {
-						if(err) throw new Error(err);
-
-						data.steps = res.body || [];
-
-						// TODO: Remove mock data
-						data.steps = data.steps.map((step) => {
-							step.status = 'COMPLETED';
-							return step;
-						});
+						challenge = res.body || {};
+						challenge.name = challengeName;
 
 						let allStepsCompleted = true;
-						data.steps.forEach((step) => {
-							if(step.status != 'COMPLETED') {
+						(challenge.steps || []).forEach((step) => {
+							if(step.status && step.status != 'COMPLETED') {
 								allStepsCompleted = false;
 							}
 						});
 
-						data.allStepsCompleted = allStepsCompleted;
+						challenge.allStepsCompleted = allStepsCompleted;
 
-						resolve(data);
+						console.log(challenge);
+
+						return resolve(challenge);
 					});
 			});
 		});

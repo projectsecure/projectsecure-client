@@ -26,9 +26,11 @@ class Challenge extends React.Component {
 
 	getFinishUI() {
 		let finishActionUI;
-		if(this.props.challenge.status == 'COMPLETED') {
+		if(this.props.status == 'COMPLETED') {
 			finishActionUI = (
-				<span className="note note-completed">Du hast diese Challenge bereits erfolgreich abgeschlossen.</span>
+				<span className="note note-completed">
+					Du hast diese Challenge bereits erfolgreich abgeschlossen.
+				</span>
 			);
 		} else {
 			finishActionUI = (
@@ -92,13 +94,22 @@ class Challenge extends React.Component {
 				<div className="card-block card-step">
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
-					<button className="btn btn-primary" onClick={this.props.actions.updateStep.bind(this, this.props.challenge.name, stepName, null)}>{label}</button>
+					<button className="btn btn-primary" onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, null)}>{label}</button>
 				</div>
 			</div>
 		);
 	}
 
-	getStepInputUI(stepName, {button_title, input_title, placeholder, title, text, button, value, type = 'text'}) {
+	getStepInputUI(stepName, {
+		button_title,
+		input_title,
+		placeholder,
+		title,
+		text,
+		button,
+		value,
+		type = 'text'
+	}) {
 
 		const changeAction = (event) => {
 			this.setState({
@@ -124,7 +135,7 @@ class Challenge extends React.Component {
 						<div className="col-xs-2 no-padding">
 							<button
 								className="btn btn-primary btn-block btn-uppercase"
-								onClick={this.props.actions.updateStep.bind(this, this.props.challenge.name, stepName, {input: this.state.input})}>
+								onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, {input: this.state.input})}>
 								{button_title}
 							</button>
 						</div>
@@ -168,7 +179,7 @@ class Challenge extends React.Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-8 offset-md-2">
-								{this.getSummaryUI(this.props.challenge)}
+								{this.getSummaryUI(this.props)}
 								{this.props.steps.map((step, index) => {
 									return (
 										<div key={index}>
