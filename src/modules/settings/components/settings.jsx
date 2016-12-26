@@ -1,5 +1,5 @@
 import SectionForm from './form';
-import LayoutBackend from '../../backend/components/layout';
+import LayoutBackend from '../../backend/containers/layout';
 
 require('../styles/settings.scss');
 
@@ -12,7 +12,7 @@ class Settings extends React.Component {
 	render() {
 		return (
 			<LayoutBackend className="route-settings">
-				<SectionForm />
+				<SectionForm {...this.props} />
 			</LayoutBackend>
 		);
 	}

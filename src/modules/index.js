@@ -1,7 +1,7 @@
 import Core from './core';
 
 import Static from './static';
-import Login from './login';
+import User from './user';
 
 import Backend from './backend';
 import Dashboard from './dashboard';
@@ -11,7 +11,7 @@ import Settings from './settings';
 export default {
 	Core,
 	Backend,
-	Login,
+	User,
     Static,
 	Dashboard,
 	Challenges,

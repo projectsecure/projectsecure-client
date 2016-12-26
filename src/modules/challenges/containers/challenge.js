@@ -1,49 +1,37 @@
 import {render} from 'react-dom';
 import {compose} from 'react-komposer';
+import {browserHistory} from 'react-router';
+
+import loginActions from '../../user/actions/login';
+import userActions from '../../user/actions/user';
 
 import component from '../components/challenge';
+import actions from '../actions/challenge';
 
 const composer = (props, onData) => {
+	userActions.checkAuth().then(() => {
 
-	let componentData = {
-		title: 'Julius\' Mission',
-		steps: [
-			{
-				type: 'summary',
-				options: {
-					title: 'Beschreibung',
-					text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-				}
-			},
-			{
-				type: 'button',
-				options: {
-					title: 'Click me',
-					text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
-					label: 'Do something',
-					action: () => {
-						alert('YEAH');
-					}
-				}
-			},
-			{
-				type: 'input',
-				options: {
-					title: 'Text me',
-					text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.',
-					placeholder: 'Something',
-					button: {
-						label: 'Do something',
-						action: (data) => {
-							alert(data);
-						}
-					}
-				}
+		const challengeName = props.params.slug;
+
+		let componentData = {
+			actions,
+			onCompleted: () => {
+				actions.completeChallenge(challengeName).then(() => {
+					browserHistory.push('/dashboard/');
+				});
 			}
-		]
-	};
+		};
 
-	onData(null, componentData);
+		actions.getChallenge(challengeName).then((data) => {
+			componentData = Object.assign(componentData, data);
+			onData(null, componentData);
+		});
+
+	}).catch(() => {
+		loginActions.logout().then(() => {
+			browserHistory.push('/login/');
+		});
+	});
 };
 
 export default compose(composer)(component);

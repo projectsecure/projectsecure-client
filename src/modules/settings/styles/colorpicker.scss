@@ -1,0 +1,34 @@
+.color-picker {
+	position: relative;
+
+	.placeholder {
+		opacity: .5;
+	}
+
+	.color {
+		width: 25px;
+		height: 25px;
+		border-radius: 50%;
+		background: #f3f0ed;
+		float: right;
+		margin-right:-10px;
+	}
+	.swatch {
+		display: inline-block;
+		cursor: pointer;
+	}
+	.picker-popover {
+		position: absolute;
+		z-index: 100;
+		top:53px;
+		right:0px;
+	}
+	.cover {
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+	}
+
+}

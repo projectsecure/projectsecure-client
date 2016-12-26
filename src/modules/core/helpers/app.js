@@ -11,6 +11,7 @@ export default class App {
 
 		this.context = context;
 		this.routes = [];
+		this._initPromises = [];
 	}
 
 	loadModules(modules = []) {
@@ -56,9 +57,25 @@ export default class App {
 		module.__loaded = true;
 	}
 
+	onInit(promise) {
+		this._initPromises.push(promise);
+	}
+
 	init() {
 		this._checkForInit();
 
+		if(this._initPromises.length) {
+			return Promise.all(this._initPromises).then(() => {
+				return this._init();
+			}).catch((err) => {
+				throw new Error(err);
+			});
+		} else {
+			return new Promise((resolve) => {resolve(this._init());});
+		}
+	}
+
+	_init() {
 		let indexRoute = undefined;
 		const routes = this.routes.map((route) => {
 			if (typeof route === 'function') {
@@ -67,6 +84,7 @@ export default class App {
 
 			if(route.path == '/') {
 				indexRoute = route;
+				delete route.path;
 			}
 
 			return route;
@@ -78,10 +96,10 @@ export default class App {
 			<Router
 				history={browserHistory}
 				routes={{
-					path: '/',
-					indexRoute: indexRoute,
-					childRoutes: routes
-				}}
+						path: '/',
+						indexRoute: indexRoute,
+						childRoutes: routes
+					}}
 				render={applyRouterMiddleware(useScroll())}
 			/>
 		);

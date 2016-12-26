@@ -7,20 +7,19 @@ require('../styles/layout.scss');
 
 class LayoutBackend extends React.Component {
 
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 	}
 
 	render() {
 		return (
-			<Layout {...this.props}>
-				<HeaderBackend />
+			<Layout className={this.props.className}>
+				<HeaderBackend currentUser={this.props.currentUser} />
 				{this.props.children}
 				<Footer />
 			</Layout>
 		);
 	}
-
 }
 
 export default LayoutBackend;

@@ -1,4 +1,4 @@
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 require('../styles/header.scss');
 
@@ -25,11 +25,13 @@ class HeaderBackend extends React.Component {
 								<li className="nav-item">
 									<div className="btn-group">
 										<button type="button" className="btn nav-link btn-secondary dropdown-toggle account-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											<img className="img-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" /><span>Lukas Müller</span>
+											<img className="img-avatar"
+												 src={this.props.currentUser.image} />
+											<span>{this.props.currentUser.username}</span>
 										</button>
 										<div className="dropdown-menu dropdown-menu-right">
 											<Link className="dropdown-item" to="/settings/">Einstellungen</Link>
-											<Link className="dropdown-item" to="/login/">Logout</Link>
+											<Link className="dropdown-item" to="/login/?logout=1">Logout</Link>
 										</div>
 									</div>
 								</li>

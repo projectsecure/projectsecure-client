@@ -1,4 +1,4 @@
-import {Link} from 'react-router'
+import {Link} from 'react-router';
 
 require('../styles/profile.scss');
 
@@ -6,7 +6,6 @@ class SectionProfile extends React.Component {
 
 	constructor(props) {
 		super(props);
-
 	}
 
 	getBadges(num) {
@@ -59,9 +58,9 @@ class SectionProfile extends React.Component {
 							</div>
 							<div className="modal-body">
 								<div className="container">
-									{this.getBadges().map((badge) => {
+									{this.getBadges().map((badge, index) => {
 										return (
-											<div className="row">
+											<div className="row" key={index}>
 												<div className="col-xs-3">
 													<img src={badge.image} />
 												</div>
@@ -98,24 +97,24 @@ class SectionProfile extends React.Component {
 			);
 		}
 
-
-
 		return (
 			<section className="section-profile">
 				<div className="container">
 					<div className="row">
 						<div className="col-md-4">
-							<img className="img-avatar" src="https://randomuser.me/api/portraits/men/11.jpg" />
+							<img className="img-avatar"
+								 src={this.props.currentUser.image} />
 							<div className="user-info">
-								<span className="user-name">Lukas Müller</span><br />
-								<span className="user-stats">3000 Punkte</span>
+								<span className="user-name">{this.props.currentUser.username}</span><br />
+								<span className="user-stats">{this.getBadges().length} Badges</span>
 							</div>
 						</div>
 						<div className="col-md-8">
 							<div className="badges">
-								{this.getBadges(numPreviewBadges).map((badge) =>  {
+								{this.getBadges(numPreviewBadges).map((badge, index) =>  {
 									return (
 										<span
+											key={index}
 											data-toggle="modal"
 											data-target="#modal-badges">
 											<span className="badge"
