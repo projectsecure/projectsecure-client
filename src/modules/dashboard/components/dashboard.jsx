@@ -24,9 +24,10 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.badges);
 		return (
 			<LayoutBackend className="route-dashboard">
-				<SectionProfile currentUser={this.props.currentUser} />
+				<SectionProfile currentUser={this.props.currentUser} badges={this.props.badges} />
 				{this.getStatusGrid('IN_PROGRESS', {title: 'Challenge fortsetzen'})}
 				{this.getStatusGrid('NOT_STARTED', {title: 'Neue Challenges'})}
 				{this.getStatusGrid('COMPLETED', {title: 'Abgeschlossene Challenges'})}

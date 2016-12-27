@@ -34,6 +34,15 @@ const composer = (props, onData, context) => {
 					});
 
 					componentData.challengesByStatus = challengesByStatus;
+
+					// badges
+					componentData.badges = (componentData.challengesByStatus['COMPLETED'] || []).map((c) => {
+						return {
+							label: c.title,
+							image: c.badge_icon_url
+						};
+					});
+
 				})
 		]).then(() => {
 			onData(null, componentData);

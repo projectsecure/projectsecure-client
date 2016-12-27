@@ -19,6 +19,8 @@ const composer = (props, onData) => {
 					loginActions.login({
 						username: data.username,
 						password: data.password
+					}).then(() => {
+						browserHistory.push('/dashboard/');
 					});
 				});
 			}

@@ -3,7 +3,7 @@ import request from '../../core/helpers/request';
 export default {
 	signup: ({username, email, password, color}) => {
 		return new Promise((resolve, reject) => {
-			request.post('users/register').send({
+			request.post('users/register', null, null, {noAuth: true}).send({
 				username,
 				email,
 				password,
