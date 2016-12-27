@@ -13,11 +13,23 @@ class Dashboard extends React.Component {
 		super(props);
 	}
 
+	getStatusGrid(status, {limit = 3, title} = {}) {
+		let challenges = (this.props.challengesByStatus[status] || []);
+
+		if(!challenges.length) {
+			return '';
+		}
+
+		return (<ChallengesGrid challenges={challenges.slice(0, limit)} title={title} />);
+	}
+
 	render() {
 		return (
 			<LayoutBackend className="route-dashboard">
 				<SectionProfile currentUser={this.props.currentUser} />
-				<ChallengesGrid challenges={this.props.challenges || []} title="Challenges fortsetzen" />
+				{this.getStatusGrid('IN_PROGRESS', {title: 'Challenge fortsetzen'})}
+				{this.getStatusGrid('NOT_STARTED', {title: 'Neue Challenges'})}
+				{this.getStatusGrid('COMPLETED', {title: 'Abgeschlossene Challenges'})}
 			</LayoutBackend>
 		);
 	}

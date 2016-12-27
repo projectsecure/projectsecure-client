@@ -30,11 +30,11 @@ class Grid extends React.Component {
 						title={c.title}
 						description={c.description}
 						path={c.path}
+						status={c.status}
 					/>
 				</div>
 			);
 		});
-
 	}
 
 	render() {
