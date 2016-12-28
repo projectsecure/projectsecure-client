@@ -1,4 +1,5 @@
 import LayoutBackend from '../../backend/containers/layout';
+import challengeStatus from '../helpers/status';
 
 require('../styles/challenge.scss');
 
@@ -26,7 +27,7 @@ class Challenge extends React.Component {
 
 	getFinishUI() {
 		let finishActionUI;
-		if(this.props.status == 'COMPLETED') {
+		if(this.props.status == challengeStatus.COMPLETED) {
 			finishActionUI = (
 				<span className="note note-completed">
 					Du hast diese Challenge bereits erfolgreich abgeschlossen.
@@ -78,12 +79,12 @@ class Challenge extends React.Component {
 	}
 
 	isActiveStep(stepName) {
-		if(this.props.status == 'COMPLETED') {
+		if(this.props.status == challengeStatus.COMPLETED) {
 			return false;
 		}
 
 		let activeStep = (this.props.steps || []).find((step) => {
-			return step.status && step.status != 'COMPLETED';
+			return step.status && step.status != challengeStatus.COMPLETED;
 		});
 
 		if(!activeStep) {
@@ -114,7 +115,7 @@ class Challenge extends React.Component {
 					<p className="card-text">{text}</p>
 					<button className="btn btn-primary"
 							onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, null)}
-							disabled={(status == 'COMPLETED')}>{label}</button>
+							disabled={(status == challengeStatus.COMPLETED)}>{label}</button>
 				</div>
 			</div>
 		);
@@ -156,7 +157,7 @@ class Challenge extends React.Component {
 							<button
 								className="btn btn-primary btn-block btn-uppercase"
 								onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, {input: this.state.input})}
-								disabled={(status == 'COMPLETED')}>
+								disabled={(status == challengeStatus.COMPLETED)}>
 								{button_title}
 							</button>
 						</div>

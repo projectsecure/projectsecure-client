@@ -1,4 +1,20 @@
 import request from '../../core/helpers/request';
+import challengeStatus from '../helpers/status';
+
+const _decorateChallenge = (challenge = {}) => {
+	challenge.name = challenge.slug || challenge.name; // TODO: check if needed
+
+	let allStepsCompleted = true;
+	(challenge.steps || []).forEach((step) => {
+		if(step.status && step.status != challengeStatus.COMPLETED) {
+			allStepsCompleted = false;
+		}
+	});
+
+	challenge.allStepsCompleted = allStepsCompleted;
+
+	return challenge;
+}
 
 export default {
 	updateStep(challengeName, stepName, data) {
@@ -12,38 +28,30 @@ export default {
 		});
 	},
 
-	getChallenge(challengeName, start = true) {
-		let challenge = {};
+	startChallenge(challengeName) {
 		return new Promise((resolve, reject) => {
-			if(start) {
-				request.post(`challenges/${challengeName}/start`)
-					.end(() => {
-						// always try to start the challenge and ignore if already started
-						resolve(true);
-					});
-			} else {
-				resolve(true);
-			}
-		}).then(() => {
-			return new Promise((resolve, reject) => {
-				request.get(`challenges/${challengeName}`)
-					.end((err, res) => {
-						if(err) throw new Error(err);
+			request.post(`challenges/${challengeName}/start`)
+				.end((err, res) => {
+					if(err) {
+						reject(err);
+					}
 
-						challenge = res.body || {};
-						challenge.name = challengeName;
+					const challenge = _decorateChallenge(res.body || {});
+					return resolve(challenge);
+				});
+		});
+	},
 
-						let allStepsCompleted = true;
-						(challenge.steps || []).forEach((step) => {
-							if(step.status && step.status != 'COMPLETED') {
-								allStepsCompleted = false;
-							}
-						});
+	getChallenge(challengeName) {
+		return new Promise((resolve, reject) => {
+			request.get(`challenges/${challengeName}`)
+				.end((err, res) => {
+					if(err) {
+						reject(err);
+					}
 
-						challenge.allStepsCompleted = allStepsCompleted;
-
-						return resolve(challenge);
-					});
+					const challenge = _decorateChallenge(res.body || {});
+					return resolve(challenge);
 			});
 		});
 	},

@@ -4,6 +4,7 @@ import SectionProfile from './profile';
 import ChallengesGrid from '../../challenges/components/grid';
 
 import {Storage} from '../../core/helpers';
+import challengeStatus from '../../challenges/helpers/status';
 
 require('../styles/dashboard.scss');
 
@@ -28,9 +29,9 @@ class Dashboard extends React.Component {
 		return (
 			<LayoutBackend className="route-dashboard">
 				<SectionProfile currentUser={this.props.currentUser} badges={this.props.badges} />
-				{this.getStatusGrid('IN_PROGRESS', {title: 'Challenge fortsetzen'})}
-				{this.getStatusGrid('NOT_STARTED', {title: 'Neue Challenges'})}
-				{this.getStatusGrid('COMPLETED', {title: 'Abgeschlossene Challenges'})}
+				{this.getStatusGrid(challengeStatus.IN_PROGRESS, {title: 'Challenge fortsetzen'})}
+				{this.getStatusGrid(challengeStatus.NOT_STARTED, {title: 'Neue Challenges'})}
+				{this.getStatusGrid(challengeStatus.COMPLETED, {title: 'Abgeschlossene Challenges'})}
 			</LayoutBackend>
 		);
 	}

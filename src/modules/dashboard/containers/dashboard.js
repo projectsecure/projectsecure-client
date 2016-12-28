@@ -5,6 +5,7 @@ import { composeWithStore } from '../../core/helpers/storage';
 import loginActions from '../../user/actions/login';
 import userActions from '../../user/actions/user';
 import challengesActions from '../../challenges/actions/challenges';
+import challengeStatus from '../../challenges/helpers/status';
 
 import component from '../components/dashboard';
 
@@ -36,7 +37,7 @@ const composer = (props, onData, context) => {
 					componentData.challengesByStatus = challengesByStatus;
 
 					// badges
-					componentData.badges = (componentData.challengesByStatus['COMPLETED'] || []).map((c) => {
+					componentData.badges = (componentData.challengesByStatus[challengeStatus.COMPLETED] || []).map((c) => {
 						return {
 							label: c.title,
 							image: c.badge_icon_url

@@ -31,6 +31,12 @@ const composer = (props, onData) => {
 			actions.getChallenge(challengeName).then((data) => {
 				componentData = Object.assign(componentData, data);
 				onData(null, componentData);
+			}).catch(() => {
+				// if challenge is not started there will be an error
+				actions.startChallenge(challengeName).then((data) => {
+					componentData = Object.assign(componentData, data);
+					onData(null, componentData);
+				});
 			});
 		};
 
