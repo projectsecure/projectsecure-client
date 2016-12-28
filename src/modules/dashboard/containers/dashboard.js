@@ -40,7 +40,8 @@ const composer = (props, onData, context) => {
 					componentData.badges = (componentData.challengesByStatus[challengeStatus.COMPLETED] || []).map((c) => {
 						return {
 							label: c.title,
-							image: c.badge_icon_url
+							image: c.image,
+							description: c.description
 						};
 					});
 

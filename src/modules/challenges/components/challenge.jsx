@@ -63,6 +63,7 @@ class Challenge extends React.Component {
 							<div className="modal-body">
 								<div className="container">
 									<p>Du hast die Challenge erfolgreich abgeschlossen und erhälst folgendes Abzeichen:</p>
+									<img className="modal-badge-img" src={this.props.image} />
 								</div>
 							</div>
 							<div className="modal-footer">

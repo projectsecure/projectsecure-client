@@ -31,7 +31,7 @@ class ChallengeCard extends React.Component {
 					<h3 className="card-title">{this.props.title}</h3>
 				</div>
 				<div className="card-image">
-
+					<img src={this.props.image} />
 				</div>
 				<div className="card-block">
 					<p className="card-text">{this.props.description}</p>

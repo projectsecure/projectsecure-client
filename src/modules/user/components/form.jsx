@@ -89,6 +89,23 @@ class SectionForm extends React.Component {
 	}
 
 
+	getErrorUI() {
+		if(!this.props.error) {
+			return '';
+		}
+
+		return (
+			<div className="row">
+				<div className="col-md-4 offset-md-4">
+					<div className="alert alert-danger" role="alert">
+						{this.props.error}
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+
 
 
 	render() {
@@ -102,6 +119,7 @@ class SectionForm extends React.Component {
 							</div>
 						</div>
 					</div>
+					{this.getErrorUI()}
 					<div className="row">
 						<div className="col-md-4 offset-md-4">
 							<div className="form-group">

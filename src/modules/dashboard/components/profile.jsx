@@ -41,7 +41,8 @@ class SectionProfile extends React.Component {
 												</div>
 
 												<div className="col-xs-9">
-													<span>{badge.label}</span>
+													<span className="badge-title">{badge.label}</span>
+													<span className="badge-description">{badge.description}</span>
 												</div>
 											</div>
 										);
