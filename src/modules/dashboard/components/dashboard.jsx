@@ -25,7 +25,6 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.badges);
 		return (
 			<LayoutBackend className="route-dashboard">
 				<SectionProfile currentUser={this.props.currentUser} badges={this.props.badges} />

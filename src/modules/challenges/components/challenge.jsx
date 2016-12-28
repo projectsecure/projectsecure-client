@@ -114,7 +114,7 @@ class Challenge extends React.Component {
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
 					<button className="btn btn-primary"
-							onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, null)}
+							onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
 							disabled={(status == challengeStatus.COMPLETED)}>{label}</button>
 				</div>
 			</div>
@@ -156,7 +156,7 @@ class Challenge extends React.Component {
 						<div className="col-xs-2 no-padding">
 							<button
 								className="btn btn-primary btn-block btn-uppercase"
-								onClick={this.props.onUpdateStep.bind(this, this.props.name, stepName, {input: this.state.input})}
+								onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, {input: this.state.input})}
 								disabled={(status == challengeStatus.COMPLETED)}>
 								{button_title}
 							</button>

@@ -1,20 +1,6 @@
 import request from '../../core/helpers/request';
 import challengeStatus from '../helpers/status';
-
-const _decorateChallenge = (challenge = {}) => {
-	challenge.name = challenge.slug || challenge.name; // TODO: check if needed
-
-	let allStepsCompleted = true;
-	(challenge.steps || []).forEach((step) => {
-		if(step.status && step.status != challengeStatus.COMPLETED) {
-			allStepsCompleted = false;
-		}
-	});
-
-	challenge.allStepsCompleted = allStepsCompleted;
-
-	return challenge;
-}
+import decorateChallenge from '../helpers/decorate';
 
 export default {
 	updateStep(challengeName, stepName, data) {
@@ -36,7 +22,7 @@ export default {
 						reject(err);
 					}
 
-					const challenge = _decorateChallenge(res.body || {});
+					const challenge = decorateChallenge(res.body || {});
 					return resolve(challenge);
 				});
 		});
@@ -50,7 +36,7 @@ export default {
 						reject(err);
 					}
 
-					const challenge = _decorateChallenge(res.body || {});
+					const challenge = decorateChallenge(res.body || {});
 					return resolve(challenge);
 			});
 		});

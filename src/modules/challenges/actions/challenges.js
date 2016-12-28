@@ -1,4 +1,5 @@
 import request from '../../core/helpers/request';
+import decorateChallenge from '../helpers/decorate';
 
 export default {
 	getChallenges() {
@@ -8,10 +9,7 @@ export default {
 					reject(err);
 				}
 
-				let challenges = (res.body || []).map((c) => {
-					c.path = `/challenges/${c.slug}/`;
-					return c;
-				});
+				let challenges = (res.body || []).map((c) => decorateChallenge(c));
 
 				resolve(challenges);
 			});
