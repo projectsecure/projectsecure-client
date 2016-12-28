@@ -19,7 +19,12 @@ const composer = (props, onData) => {
 					loginActions.login({
 						username: data.username,
 						password: data.password
+					}).then(() => {
+						browserHistory.push('/dashboard/');
 					});
+				}).catch(() => {
+					componentData.error = 'Oh, es scheint so, als fehlen einige Informationen. Oder du hast etwas falsch eingegeben.';
+					onData(null, componentData);
 				});
 			}
 		};

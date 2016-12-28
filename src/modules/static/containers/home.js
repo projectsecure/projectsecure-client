@@ -9,7 +9,7 @@ import actions from '../actions/home';
 const composer = (props, onData, context) => {
 	let componentData = Object.assign({}, {actions}, context.getState().userState);
 
-	challengesActions.getChallenges().then((challenges) => {
+	challengesActions.getChallenges({noAuth: true}).then((challenges) => {
 		componentData.challenges = challenges;
 		onData(null, componentData);
 	});

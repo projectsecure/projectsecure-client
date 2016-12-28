@@ -9,32 +9,7 @@ class SectionProfile extends React.Component {
 	}
 
 	getBadges(num) {
-		const badges = [
-			{
-				label: 'Test',
-				image: 'http://localhost:3100/images/badge.png'
-			},
-			{
-				label: 'Test',
-				image: 'http://localhost:3100/images/badge.png'
-			},
-			{
-				label: 'Test',
-				image: 'http://localhost:3100/images/badge.png'
-			},
-			{
-				label: 'Test',
-				image: 'http://localhost:3100/images/badge.png'
-			},
-			{
-				label: 'Test',
-				image: 'http://localhost:3100/images/badge.png'
-			},
-			{
-				label: 'Test',
-				image: 'http://localhost:3100/images/badge.png'
-			}
-		];
+		const badges = this.props.badges;
 
 		if (num) {
 			return badges.slice(0, num);
@@ -66,7 +41,8 @@ class SectionProfile extends React.Component {
 												</div>
 
 												<div className="col-xs-9">
-													<span>{badge.label}</span>
+													<span className="badge-title">{badge.label}</span>
+													<span className="badge-description">{badge.description}</span>
 												</div>
 											</div>
 										);

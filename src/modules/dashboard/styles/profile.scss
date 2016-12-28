@@ -67,3 +67,21 @@
 	}
 
 }
+
+#modal-badges {
+	img {
+		max-width:100%;
+		height:auto;
+	}
+
+	.badge-title {
+		display: block;
+		font-size:20px;
+		font-weight:700;
+		line-height:30px;
+	}
+	
+	.badge-description {
+		display: block;	
+	}
+}

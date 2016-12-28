@@ -11,7 +11,12 @@
 
 	.card-image {
 		width:100%;
-		height:200px;
-		background:#bbad9d;
+		height:auto;
+		padding:20px 40px;
+
+		img {
+			width:100%;
+			height:auto;
+		}
 	}
 }

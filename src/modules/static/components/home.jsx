@@ -17,7 +17,7 @@ class Home extends React.Component {
 		return (
 			<LayoutStatic className="route-home" {...this.props}>
 				<SectionIntro currentUser={this.props.currentUser} />
-				<ChallengesGrid challenges={this.props.challenges || []} />
+				<ChallengesGrid challenges={(this.props.challenges || []).slice(0, 3)} />
 				<SectionAbout />
 				<SectionMentions />
 			</LayoutStatic>

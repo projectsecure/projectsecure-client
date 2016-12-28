@@ -1,20 +1,34 @@
 @import '../../core/styles/colors.scss';
 
-.section-challenge {
-	width: 100%;
-	float: left;
-	padding: 60px 0px 30px;
-	background: $color-beige;
+.route-challenge {
 
-	.with-border {
-		border-top:1px solid #eee;
+	.section-challenge {
+		width: 100%;
+		float: left;
+		padding: 60px 0px 30px;
+		background: $color-beige;
+
+		.with-border {
+			border-top:1px solid #eee;
+		}
+
+		h2 {
+			margin-bottom:0px;
+		}
+
+		.padding-right {
+			padding-right:10px !important;
+		}
+
+		.card-active {
+			box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+			border: 1px solid #ccc;
+		}
 	}
 
-	h2 {
-		margin-bottom:0px;
+	.modal-badge-img {
+		width:100%;
+		height:auto;
 	}
 
-	.padding-right {
-		padding-right:10px !important;
-	}
 }
