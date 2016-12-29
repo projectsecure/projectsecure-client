@@ -5,6 +5,8 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var BUILD_DIR = path.resolve(__dirname, 'dist/');
 var APP_DIR = path.resolve(__dirname, 'src/');
 
+console.info('Building for API_URL: ', process.env.API_URL);
+
 var config = {
 	entry: ['babel-polyfill', APP_DIR + '/app.js'],
 	output: {
