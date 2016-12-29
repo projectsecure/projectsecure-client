@@ -1,5 +1,7 @@
 FROM node
 
+ARG API_URL=http://localhost:8000
+
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
