@@ -1,0 +1,20 @@
+@import '../../core/styles/colors.scss';
+
+.route-loading {
+	width:100%;
+	float:left;
+	background:#dac9b7 url(../../../static/images/bgtmp.png) center bottom no-repeat;
+	background-size:100% auto;
+	position: absolute;
+	height: 100%;
+
+	span {
+		transform: translate(-50%, -50%);
+		top:50%;
+		left:50%;
+		color: #bbad9c;
+		font-weight: 700;
+		font-size:40px;
+		position: absolute;
+	}
+}
