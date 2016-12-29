@@ -32,12 +32,15 @@
 		.badge {
 			float: left;
 			margin-right: 10px;
-			background: url(../../../static/images/badge.png) center center no-repeat;
+			background: url(../../../static/images/badge-more.png) center center no-repeat;
 			height: 48px;
 			width: 48px;
 			display: inline-block;
 			background-size: contain;
-			cursor: pointer;
+
+			&.badge-link {
+				cursor: pointer;
+			}
 
 			&.badge-more {
 				background: url(../../../static/images/badge-more.png) center center no-repeat;
@@ -80,8 +83,8 @@
 		font-weight:700;
 		line-height:30px;
 	}
-	
+
 	.badge-description {
-		display: block;	
+		display: block;
 	}
 }

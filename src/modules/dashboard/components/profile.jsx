@@ -18,6 +18,48 @@ class SectionProfile extends React.Component {
 		}
 	}
 
+	getBadgesUI() {
+		const numPreviewBadges = 5;
+		const numBadges = this.getBadges().length;
+		const numOverflowBadges = numBadges - numPreviewBadges;
+
+		let additionalBadges;
+		if(numOverflowBadges > 0) {
+			additionalBadges = (
+				<span
+					className="badge badge-more badge-link"
+					data-toggle="modal"
+					data-target="#modal-badges">+{numOverflowBadges}</span>
+			);
+		} else if(numPreviewBadges - numBadges > 0) {
+			additionalBadges = [];
+			for(let i = numPreviewBadges - numBadges; i > 0; i--) {
+				additionalBadges.push(<span className="badge"></span>);
+			}
+		}
+
+		return (
+			<div className="badges">
+				{this.getBadges(numPreviewBadges).map((badge, index) =>  {
+					return (
+						<span
+							key={index}
+							data-toggle="modal"
+							data-target="#modal-badges">
+							<span className="badge badge-link"
+								  style={{backgroundImage: `url(${badge.image})`}}
+								  data-toggle="tooltip"
+								  data-placement="bottom"
+								  title={badge.label}></span>
+						</span>
+					);
+				})}
+
+				{additionalBadges}
+			</div>
+		);
+	}
+
 
 	getModalUI() {
 		return (
@@ -60,19 +102,6 @@ class SectionProfile extends React.Component {
 	}
 
 	render() {
-		const numPreviewBadges = 5;
-		let numBadges = this.getBadges().length - numPreviewBadges;
-
-		let showMoreBadge;
-		if(numBadges > 0) {
-			showMoreBadge = (
-				<span
-					className="badge badge-more"
-					data-toggle="modal"
-					data-target="#modal-badges">+{numBadges}</span>
-			);
-		}
-
 		return (
 			<section className="section-profile">
 				<div className="container">
@@ -86,23 +115,7 @@ class SectionProfile extends React.Component {
 							</div>
 						</div>
 						<div className="col-md-8">
-							<div className="badges">
-								{this.getBadges(numPreviewBadges).map((badge, index) =>  {
-									return (
-										<span
-											key={index}
-											data-toggle="modal"
-											data-target="#modal-badges">
-											<span className="badge"
-												  style={{backgroundImage: `url(${badge.image})`}}
-												  data-toggle="tooltip"
-												  data-placement="bottom"
-												  title={badge.label}></span>
-										</span>
-									);
-								})}
-								{showMoreBadge}
-							</div>
+							{this.getBadgesUI()}
 						</div>
 					</div>
 				</div>

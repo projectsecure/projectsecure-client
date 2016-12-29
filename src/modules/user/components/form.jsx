@@ -52,21 +52,65 @@ class SectionForm extends React.Component {
 		}
 	}
 
+	getFormGroupUI(fieldName, fieldUI) {
+		const errorUI = this.getFieldErrorUI(fieldName);
+		return (
+			<div className={`form-group ${errorUI ? 'has-danger' : ''}`}>
+				{fieldUI}
+				{errorUI}
+			</div>
+		);
+	}
+
 	getFieldsUI() {
 		if(this.props.role == 'login') {
 			return (
 				<div>
-					<input type="text" className="form-control form-control-lg" placeholder="Benutzername" onChange={this.handleFieldChange.bind(this, 'username')} />
-					<input type="password" className="form-control form-control-lg" placeholder="Passwort" onChange={this.handleFieldChange.bind(this, 'password')} />
+					{this.getFormGroupUI('username', (
+						<input type="text"
+							   className="form-control form-control-lg"
+							   placeholder="Benutzername"
+							   onChange={this.handleFieldChange.bind(this, 'username')}
+						/>
+					))}
+
+					{this.getFormGroupUI('password', (
+						<input type="password"
+							   className="form-control form-control-lg"
+							   placeholder="Passwort"
+							   onChange={this.handleFieldChange.bind(this, 'password')}
+						/>
+					))}
 				</div>
 			);
 		} else {
 			return (
 				<div>
-					<input type="text" className="form-control form-control-lg" placeholder="Benutzername" onChange={this.handleFieldChange.bind(this, 'username')} />
-					{this.getColorPickerUI()}
-					<input type="text" className="form-control form-control-lg" placeholder="E-Mail-Adresse" onChange={this.handleFieldChange.bind(this, 'email')} />
-					<input type="password" className="form-control form-control-lg" placeholder="Passwort" onChange={this.handleFieldChange.bind(this, 'password')} />
+					{this.getFormGroupUI('username', (
+						<input type="text"
+							   className="form-control form-control-lg"
+							   placeholder="Benutzername"
+							   onChange={this.handleFieldChange.bind(this, 'username')}
+						/>
+					))}
+
+					{this.getFormGroupUI('color', this.getColorPickerUI())}
+
+					{this.getFormGroupUI('email', (
+						<input type="text"
+							   className="form-control form-control-lg"
+							   placeholder="E-Mail-Adresse"
+							   onChange={this.handleFieldChange.bind(this, 'email')}
+						/>
+					))}
+
+					{this.getFormGroupUI('password', (
+						<input type="password"
+							   className="form-control form-control-lg"
+							   placeholder="Passwort"
+							   onChange={this.handleFieldChange.bind(this, 'password')}
+						/>
+					))}
 				</div>
 			);
 		}
@@ -89,23 +133,17 @@ class SectionForm extends React.Component {
 	}
 
 
-	getErrorUI() {
-		if(!this.props.error) {
-			return '';
+	getFieldErrorUI(fieldName) {
+		if(!this.props.error || !this.props.error.fields[fieldName]) {
+			return;
 		}
 
 		return (
-			<div className="row">
-				<div className="col-md-4 offset-md-4">
-					<div className="alert alert-danger" role="alert">
-						{this.props.error}
-					</div>
-				</div>
+			<div className="form-control-feedback">
+				{this.props.error.fields[fieldName]}
 			</div>
 		);
 	}
-
-
 
 
 	render() {
@@ -119,7 +157,6 @@ class SectionForm extends React.Component {
 							</div>
 						</div>
 					</div>
-					{this.getErrorUI()}
 					<div className="row">
 						<div className="col-md-4 offset-md-4">
 							<div className="form-group">

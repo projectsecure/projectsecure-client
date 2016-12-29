@@ -108,15 +108,19 @@ class Challenge extends React.Component {
 		);
 	}
 
-	getStepButtonUI(stepName, status, {label, title, text}) {
+	getStepButtonUI(stepName, status, {
+		label,
+		title,
+		text,
+		button_title}) {
 		return (
 			<div>
 				<div className="card-block card-step">
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
-					<button className="btn btn-primary"
+					<button className="btn btn-primary btn-uppercase btn-block"
 							onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
-							disabled={(status == challengeStatus.COMPLETED)}>{label}</button>
+							disabled={(status == challengeStatus.COMPLETED)}>{button_title}</button>
 				</div>
 			</div>
 		);

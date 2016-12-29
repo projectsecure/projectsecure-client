@@ -9,7 +9,7 @@ export default {
 				password,
 				color
 			}).end((err, res) => {
-				if(err) reject(err);
+				if(err) reject({error: err, response: res});
 
 				resolve(true);
 			});
