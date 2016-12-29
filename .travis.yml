@@ -1,5 +1,25 @@
+sudo: required
+
 language: node_js
 node_js:
   - "6"
+
 services:
   - mongodb
+  - docker
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.6.0
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker build -t nikriek/projectsecure-client:latest --build-arg API_URL=$API_URL . ;
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push nikriek/projectsecure-client:latest;
+    fi
