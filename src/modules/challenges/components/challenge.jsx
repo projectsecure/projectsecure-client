@@ -101,8 +101,8 @@ class Challenge extends React.Component {
 		return (
 			<div>
 				<div className="card-block card-step">
-					<h3 className="card-title">{title}</h3>
-					<p className="card-text">{text}</p>
+					{this.getCardTitleUI(title)}
+					{this.getCardTextUI(text)}
 				</div>
 			</div>
 		);
@@ -116,8 +116,8 @@ class Challenge extends React.Component {
 		return (
 			<div>
 				<div className="card-block card-step">
-					<h3 className="card-title">{title}</h3>
-					<p className="card-text">{text}</p>
+					{this.getCardTitleUI(title)}
+					{this.getCardTextUI(text)}
 					<button className="btn btn-primary btn-uppercase btn-block"
 							onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
 							disabled={(status == challengeStatus.COMPLETED)}>{button_title}</button>
@@ -146,8 +146,8 @@ class Challenge extends React.Component {
 		return (
 			<div>
 				<div className="card-block card-step">
-					<h3 className="card-title">{title}</h3>
-					<p className="card-text">{text}</p>
+					{this.getCardTitleUI(title)}
+					{this.getCardTextUI(text)}
 					<div className="form-group">
 						<div className="col-xs-10 no-padding padding-right">
 							<input
@@ -172,6 +172,36 @@ class Challenge extends React.Component {
 		);
 	}
 
+	getCardTitleUI(title) {
+		if(!title) return;
+
+		return (
+			<h3 className="card-title">{title}</h3>
+		);
+	}
+
+	getCardTextUI(text) {
+		if(!text) return;
+
+		return (
+			<p className="card-text">{text}</p>
+		);
+	}
+
+	getCardErrorUI(stepName) {
+		if(!this.props.error || !this.props.error.fields || !this.props.error.fields[stepName]) {
+			return;
+		}
+
+		return (
+			<div className="card-block">
+				<div className="alert alert-danger alert-nomargin">
+					{this.props.error.fields[stepName]}
+				</div>
+			</div>
+		);
+	}
+
 
 	getStepUI({name, type, options, status}) {
 		let content;
@@ -189,9 +219,12 @@ class Challenge extends React.Component {
 				break;
 		}
 
+		const errorUI = this.getCardErrorUI(name);
+
 		if(content) {
 			return (
 				<div className={`card ${this.isActiveStep(name) ? 'card-active' : ''}`}>
+					{errorUI}
 					{content(name, status, options)}
 				</div>
 			)
