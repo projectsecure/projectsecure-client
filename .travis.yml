@@ -3,3 +3,9 @@ node_js:
   - "6"
 services:
   - mongodb
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker build -t nikriek/projectsecure-client:latest --build-arg API_URL=$API_URL . ;
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push nikriek/projectsecure-client:latest;
+    fi
