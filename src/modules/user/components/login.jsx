@@ -12,7 +12,7 @@ class Login extends React.Component {
 	render() {
 		return (
 			<LayoutStatic className="route-login">
-				<SectionForm role="login" onSubmit={this.props.onLogin.bind(this)} />
+				<SectionForm role="login" onSubmit={this.props.onLogin.bind(this)} error={this.props.error} />
 			</LayoutStatic>
 		);
 	}

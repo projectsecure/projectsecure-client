@@ -5,8 +5,10 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var BUILD_DIR = path.resolve(__dirname, 'dist/');
 var APP_DIR = path.resolve(__dirname, 'src/');
 
+console.info('Building for API_URL: ', process.env.API_URL);
+
 var config = {
-	entry: APP_DIR + '/app.js',
+	entry: ['babel-polyfill', APP_DIR + '/app.js'],
 	output: {
 		path: BUILD_DIR,
 		filename: 'bundle.js'
@@ -58,7 +60,10 @@ var config = {
 			tether: 'tether',
 			Tether: 'tether',
 			'React': 'react'
-		})
+		}),
+		new webpack.DefinePlugin({
+			'process.env.API_URL': JSON.stringify(process.env.API_URL),
+		}),
 	]
 };
 

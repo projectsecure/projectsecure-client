@@ -1,4 +1,5 @@
 import LayoutBackend from '../../backend/containers/layout';
+import challengeStatus from '../helpers/status';
 
 require('../styles/challenge.scss');
 
@@ -26,9 +27,11 @@ class Challenge extends React.Component {
 
 	getFinishUI() {
 		let finishActionUI;
-		if(this.props.challenge.status == 'COMPLETED') {
+		if(this.props.status == challengeStatus.COMPLETED) {
 			finishActionUI = (
-				<span className="note note-completed">Du hast diese Challenge bereits erfolgreich abgeschlossen.</span>
+				<span className="note note-completed">
+					Du hast diese Challenge bereits erfolgreich abgeschlossen.
+				</span>
 			);
 		} else {
 			finishActionUI = (
@@ -40,8 +43,8 @@ class Challenge extends React.Component {
 		}
 
 		return (
-			<div className="card">
-				<div className="card-block">
+			<div className={`card ${this.isActiveStep('finish') ? 'card-active' : ''}`}>
+				<div className="card-block card-step">
 					{finishActionUI}
 				</div>
 			</div>
@@ -60,6 +63,7 @@ class Challenge extends React.Component {
 							<div className="modal-body">
 								<div className="container">
 									<p>Du hast die Challenge erfolgreich abgeschlossen und erhälst folgendes Abzeichen:</p>
+									<img className="modal-badge-img" src={this.props.image} />
 								</div>
 							</div>
 							<div className="modal-footer">
@@ -75,7 +79,25 @@ class Challenge extends React.Component {
 		);
 	}
 
-	getStepTextUI(stepName, {title, text}) {
+	isActiveStep(stepName) {
+		if(this.props.status == challengeStatus.COMPLETED) {
+			return false;
+		}
+
+		let activeStep = (this.props.steps || []).find((step) => {
+			return step.status && step.status != challengeStatus.COMPLETED;
+		});
+
+		if(!activeStep) {
+			activeStep = {
+				name: 'finish'
+			}
+		}
+
+		return activeStep.name == stepName;
+	}
+
+	getStepTextUI(stepName, status, {title, text}) {
 		return (
 			<div>
 				<div className="card-block card-step">
@@ -86,19 +108,30 @@ class Challenge extends React.Component {
 		);
 	}
 
-	getStepButtonUI(stepName, {label, title, text}) {
+	getStepButtonUI(stepName, status, {label, title, text}) {
 		return (
 			<div>
 				<div className="card-block card-step">
 					<h3 className="card-title">{title}</h3>
 					<p className="card-text">{text}</p>
-					<button className="btn btn-primary" onClick={this.props.actions.updateStep.bind(this, this.props.challenge.name, stepName, null)}>{label}</button>
+					<button className="btn btn-primary"
+							onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
+							disabled={(status == challengeStatus.COMPLETED)}>{label}</button>
 				</div>
 			</div>
 		);
 	}
 
-	getStepInputUI(stepName, {button_title, input_title, placeholder, title, text, button, value, type = 'text'}) {
+	getStepInputUI(stepName, status, {
+		button_title,
+		input_title,
+		placeholder,
+		title,
+		text,
+		button,
+		value,
+		type = 'text'
+	}) {
 
 		const changeAction = (event) => {
 			this.setState({
@@ -124,7 +157,8 @@ class Challenge extends React.Component {
 						<div className="col-xs-2 no-padding">
 							<button
 								className="btn btn-primary btn-block btn-uppercase"
-								onClick={this.props.actions.updateStep.bind(this, this.props.challenge.name, stepName, {input: this.state.input})}>
+								onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, {input: this.state.input})}
+								disabled={(status == challengeStatus.COMPLETED)}>
 								{button_title}
 							</button>
 						</div>
@@ -135,7 +169,7 @@ class Challenge extends React.Component {
 	}
 
 
-	getStepUI({name, type, options}) {
+	getStepUI({name, type, options, status}) {
 		let content;
 		switch(type) {
 			case 'TextStep':
@@ -153,8 +187,8 @@ class Challenge extends React.Component {
 
 		if(content) {
 			return (
-				<div className="card">
-					{content(name, options)}
+				<div className={`card ${this.isActiveStep(name) ? 'card-active' : ''}`}>
+					{content(name, status, options)}
 				</div>
 			)
 		}
@@ -168,7 +202,7 @@ class Challenge extends React.Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-md-8 offset-md-2">
-								{this.getSummaryUI(this.props.challenge)}
+								{this.getSummaryUI(this.props)}
 								{this.props.steps.map((step, index) => {
 									return (
 										<div key={index}>

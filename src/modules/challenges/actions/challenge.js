@@ -1,61 +1,43 @@
 import request from '../../core/helpers/request';
+import challengeStatus from '../helpers/status';
+import decorateChallenge from '../helpers/decorate';
 
 export default {
 	updateStep(challengeName, stepName, data) {
-		request
-			.put(`challenges/${challengeName}/steps/${stepName}`)
-			.send(data)
-			.end((res) => {
-				//console.log(res);
-				// TODO: do something with output
-			});
+		return new Promise((resolve, reject) => {
+			request
+				.put(`challenges/${challengeName}/steps/${stepName}`)
+				.send(data)
+				.end((res) => {
+					resolve(res);
+				});
+		});
+	},
+
+	startChallenge(challengeName) {
+		return new Promise((resolve, reject) => {
+			request.post(`challenges/${challengeName}/start`)
+				.end((err, res) => {
+					if(err) {
+						reject(err);
+					}
+
+					const challenge = decorateChallenge(res.body || {});
+					return resolve(challenge);
+				});
+		});
 	},
 
 	getChallenge(challengeName) {
-		const data = {};
 		return new Promise((resolve, reject) => {
-			request.post(`challenges/${challengeName}/start`)
-				.end(() => {
-					// always try to start the challenge and ignore if already started
-					resolve(true);
-				});
-		}).then(() => {
-			return new Promise((resolve, reject) => {
-				request.get(`challenges/${challengeName}`)
-					.end((err, res) => {
-						if(err) throw new Error(err);
+			request.get(`challenges/${challengeName}`)
+				.end((err, res) => {
+					if(err) {
+						reject(err);
+					}
 
-						data.challenge = res.body || {};
-						data.challenge.name = challengeName;
-
-						return resolve(res);
-					});
-			});
-		}).then(() => {
-			return new Promise((resolve, reject) => {
-				request.get(`challenges/${challengeName}/steps`)
-					.end((err, res) => {
-						if(err) throw new Error(err);
-
-						data.steps = res.body || [];
-
-						// TODO: Remove mock data
-						data.steps = data.steps.map((step) => {
-							step.status = 'COMPLETED';
-							return step;
-						});
-
-						let allStepsCompleted = true;
-						data.steps.forEach((step) => {
-							if(step.status != 'COMPLETED') {
-								allStepsCompleted = false;
-							}
-						});
-
-						data.allStepsCompleted = allStepsCompleted;
-
-						resolve(data);
-					});
+					const challenge = decorateChallenge(res.body || {});
+					return resolve(challenge);
 			});
 		});
 	},

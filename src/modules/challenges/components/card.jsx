@@ -1,5 +1,7 @@
 import {Link} from 'react-router';
 
+import challengeStatus from '../helpers/status';
+
 require('../styles/card.scss');
 
 class ChallengeCard extends React.Component {
@@ -10,10 +12,10 @@ class ChallengeCard extends React.Component {
 
 	getButtonLabel(status) {
 		switch(status) {
-			case 'IN_PROGRESS': {
+			case challengeStatus.IN_PROGRESS: {
 				return 'Fortsetzen';
 			}
-			case 'COMPLETED': {
+			case challengeStatus.COMPLETED: {
 				return 'Ansehen'
 			}
 			default: {
@@ -29,7 +31,7 @@ class ChallengeCard extends React.Component {
 					<h3 className="card-title">{this.props.title}</h3>
 				</div>
 				<div className="card-image">
-
+					<img src={this.props.image} />
 				</div>
 				<div className="card-block">
 					<p className="card-text">{this.props.description}</p>
