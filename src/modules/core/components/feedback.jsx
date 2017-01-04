@@ -5,10 +5,6 @@ require('../styles/feedback.scss');
 class Feedback extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			feedback: '',
-		}
 	}
 
 	componentDidMount() {
@@ -64,11 +60,7 @@ class Feedback extends React.Component {
 							</div>
 							<div className="modal-footer">
 								<button type="button" className="btn btn-uppercase btn-secondary" data-dismiss="modal">Close</button>
-<<<<<<< bc02f2cb92b54ccd3e7b487d306fdb0ca0352dc6
 								<button type="button" onClick={this.sendFeedback.bind(this)} className="btn btn-uppercase btn-primary">Feedback abschicken</button>
-=======
-								<button type="button" onClick={this.sendFeedback().bind(this)} className="btn btn-uppercase btn-primary">Send message</button>
->>>>>>> contact, first imprint, undone feedback
 							</div>
 						</div>
 					</div>
