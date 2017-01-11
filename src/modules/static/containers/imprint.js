@@ -5,7 +5,7 @@ import component from '../components/page';
 
 const composer = (props, onData) => {
 	let componentData = {};
-	componentData.title = "Impressum"
+	componentData.title = "Impressum";
 	componentData.text = (
 		<div>
 			<p>openHPI - Hasso Plattner Institute for Software Systems Engineering</p>

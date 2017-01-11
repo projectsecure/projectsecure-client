@@ -1,10 +1,9 @@
 import {browserHistory} from 'react-router';
+import request from '../../core/helpers/request';
 
 export default {
-	feedback: ({feedback}) => {
-		request.post('http://localhost:8000/api/feedback').send({
-			feedback
-		}).end((err, res) => {
+	feedback: (feedback) => {
+		request.post('feedback', {text: feedback}, null, {noAuth: true}).end((err, res) => {
 			if(err) throw new Error(err);
 		});
 	}

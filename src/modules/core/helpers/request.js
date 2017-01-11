@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 
-const API_URL = process.env.API_URL || 'http://localhost:8000/api/';
+const API_URL = process.env.API_URL || 'http://172.18.0.3:8000/api/';
 
 const getAuthHeader = ({noAuth}) => {
 	return noAuth ? {} : {'Authorization': 'JWT ' + localStorage.token};
