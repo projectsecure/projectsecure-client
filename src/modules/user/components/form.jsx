@@ -81,6 +81,7 @@ class SectionForm extends React.Component {
 							   onChange={this.handleFieldChange.bind(this, 'password')}
 						/>
 					))}
+					{this.props.error ? <p>Der Nutzername oder das Passwort waren nicht korrekt. Bitte versuch es nochmal.</p> : <p>&nbsp;</p>}
 				</div>
 			);
 		} else {
