@@ -4,6 +4,9 @@ export default [
 	{
 		path: '/settings/',
 		name: 'settings',
-		component: Settings
+		component: Settings,
+		meta: {
+			title: 'Settings'
+		}
 	}
 ];

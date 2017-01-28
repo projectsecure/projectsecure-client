@@ -11,15 +11,24 @@ export default [
 	{
 		path: '/partner/',
 		name: 'partner',
-		component: Partner
+		component: Partner,
+		meta: {
+			title: 'Partner'
+		}
 	},
 	{
 		path: '/contact/',
 		name: 'contact',
-		component: Contact
+		component: Contact,
+		meta: {
+			title: 'Contact'
+		}
 	},{
 		path: '/imprint/',
 		name: 'imprint',
-		component: Imprint
+		component: Imprint,
+		meta: {
+			title: 'Imprint'
+		}
 	}
 ];

@@ -1,0 +1,42 @@
+@import 'colors';
+
+.error-page {
+	background: #dac9b7 url(../../../static/images/bgtmp.png) center bottom no-repeat;
+	background-size: 100% auto;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+
+	h3 {
+		color: #123;
+		float: left;
+		width: 100%;
+		text-align: center;
+		font-weight: bold;
+		margin: 100px 0px;
+	}
+
+
+	.details {
+		padding: 100px 0px;
+		width: 100%;
+
+		.error-code {
+			font-size: 800%;
+			font-weight: bold;
+		}
+
+		.error-title {
+			font-weight: bold;
+			font-size: 500%;
+			text-transform: uppercase;
+		}
+
+		.error-description {
+			margin-top: 50px;
+			font-size: 200%;
+			max-width: 500px;
+		}
+	}
+
+}
