@@ -34,7 +34,7 @@ class ChallengeCard extends React.Component {
 					<img src={this.props.image} />
 				</div>
 				<div className="card-block">
-					<p className="card-text">{this.props.description}</p>
+					<p className="card-text">{this.props.summary || this.props.description}</p>
 					<Link className="btn btn-uppercase btn-primary btn-block" to={this.props.path}>
 						{this.getButtonLabel(this.props.status)}
 					</Link>
