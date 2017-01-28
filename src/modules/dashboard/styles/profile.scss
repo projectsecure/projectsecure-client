@@ -87,4 +87,8 @@
 	.badge-description {
 		display: block;
 	}
+
+	.modal-body .row + .row {
+		margin-top: 30px;
+	}
 }

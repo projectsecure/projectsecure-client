@@ -1,6 +1,8 @@
 import LayoutBackend from '../../backend/containers/layout';
 import challengeStatus from '../helpers/status';
 
+import marked from 'marked';
+
 require('../styles/challenge.scss');
 
 class Challenge extends React.Component {
@@ -19,7 +21,7 @@ class Challenge extends React.Component {
 					<h2 className="card-title">{title}</h2>
 				</div>
 				<div className="card-block with-border">
-					<p className="card-text">{description}</p>
+					<div className="card-text" dangerouslySetInnerHTML={{__html: marked(description)}} />
 				</div>
 			</div>
 		);
@@ -118,9 +120,11 @@ class Challenge extends React.Component {
 				<div className="card-block card-step">
 					{this.getCardTitleUI(title)}
 					{this.getCardTextUI(text)}
-					<button className="btn btn-primary btn-uppercase btn-block"
-							onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
-							disabled={(status == challengeStatus.COMPLETED)}>{button_title}</button>
+					<div className="form-group">
+						<button className="btn btn-primary btn-uppercase btn-block"
+								onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
+								disabled={(status == challengeStatus.COMPLETED)}>{button_title}</button>
+					</div>
 				</div>
 			</div>
 		);
@@ -176,7 +180,7 @@ class Challenge extends React.Component {
 		if(!title) return;
 
 		return (
-			<h3 className="card-title">{title}</h3>
+			<h4 className="card-title">{title}</h4>
 		);
 	}
 
@@ -184,7 +188,7 @@ class Challenge extends React.Component {
 		if(!text) return;
 
 		return (
-			<p className="card-text">{text}</p>
+			<div className="card-text" dangerouslySetInnerHTML={{__html: marked(text)}} />
 		);
 	}
 
