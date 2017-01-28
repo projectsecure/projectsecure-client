@@ -5,10 +5,26 @@ require('../styles/feedback.scss');
 class Feedback extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			feedback: ""
+		};
 	}
+
 	componentDidMount() {
 		$('[data-toggle="tooltip"]').tooltip();
 	}
+
+	handleFieldChange(key, event) {
+		let newState = this.state || {};
+		newState[key] = event.target.value;
+
+		this.setState(newState);
+	}
+
+	sendFeedback(e) {
+		this.props.actions.feedback(this.state.feedback);
+	};
 
 
 	render() {
@@ -42,13 +58,13 @@ class Feedback extends React.Component {
 							<div className="modal-body">
 								<form>
 									<div className="form-group">
-										<textarea className="form-control" rows="5" id="message-text"></textarea>
+										<textarea className="form-control" rows="5" id="message-text" onChange={this.handleFieldChange.bind(this, 'feedback')}></textarea>
 									</div>
 								</form>
 							</div>
 							<div className="modal-footer">
 								<button type="button" className="btn btn-uppercase btn-secondary" data-dismiss="modal">Close</button>
-								<button type="button" className="btn btn-uppercase btn-primary">Send message</button>
+								<button type="button" onClick={this.sendFeedback.bind(this)} className="btn btn-uppercase btn-primary" data-dismiss="modal">Feedback abschicken</button>
 							</div>
 						</div>
 					</div>

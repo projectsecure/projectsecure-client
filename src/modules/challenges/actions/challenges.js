@@ -6,7 +6,7 @@ export default {
 		return new Promise((resolve, reject) => {
 			request.get('challenges', null, null, options).end((err, res) => {
 				if(err) {
-					reject(err);
+					return reject(err);
 				}
 
 				let challenges = (res.body || []).map((c) => decorateChallenge(c));
