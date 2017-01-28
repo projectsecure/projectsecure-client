@@ -32,9 +32,6 @@ class Header extends React.Component {
 							<Link className="navbar-brand" to="/" />
 							<ul className="nav navbar-nav navbar-right">
 								<li className="nav-item">
-									<Link className="nav-link" to="/partner/">Partner werden</Link>
-								</li>
-								<li className="nav-item">
 									<Link className="nav-link" to="/contact/">Kontakt</Link>
 								</li>
 								<li className="nav-item">
