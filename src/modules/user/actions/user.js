@@ -9,7 +9,13 @@ import request from '../../core/helpers/request';
 
 const actions = {
 	updateUser(data) {
-		// TODO: use user endpoint when available
+		return new Promise((resolve, reject) => {
+			request
+				.patch('users/me', data)
+				.end((err, res) => {
+					resolve(res);
+				});
+		});
 	},
 
 	deleteUser(data) {

@@ -11,6 +11,9 @@ const composer = (props, onData) => {
 	userActions.checkAuth().then(() => {
 
 		let componentData = {
+			onUserUpdate: (data) => {
+				userActions.updateUser(data);
+			},
 			onUserDelete: () => {
 				userActions.deleteUser().then(loginActions.logout()).then(() => {
 					browserHistory.push('/login/');
