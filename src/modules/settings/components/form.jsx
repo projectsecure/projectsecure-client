@@ -143,7 +143,7 @@ class SectionForm extends React.Component {
 								<label className="col-xs-3 col-form-label">Account löschen</label>
 								<div className="col-xs-9">
 									<button className="btn btn-danger btn-uppercase"
-											onClick={this.handleLogin.bind(this)}>
+											onClick={this.props.onUserDelete.bind(this)}>
 										Account löschen
 									</button>
 								</div>

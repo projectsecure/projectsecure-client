@@ -10,7 +10,13 @@ import component from '../components/settings';
 const composer = (props, onData) => {
 	userActions.checkAuth().then(() => {
 
-		let componentData = {};
+		let componentData = {
+			onUserDelete: () => {
+				userActions.deleteUser().then(loginActions.logout()).then(() => {
+					browserHistory.push('/login/');
+				});
+			}
+		};
 
 		userActions.getCurrentUser().then((user) => {
 			componentData.user = user;

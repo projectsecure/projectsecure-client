@@ -12,6 +12,16 @@ const actions = {
 		// TODO: use user endpoint when available
 	},
 
+	deleteUser(data) {
+		return new Promise((resolve, reject) => {
+			request
+				.del('users/me')
+				.end((err, res) => {
+					resolve(res);
+				});
+		});
+	},
+
 	checkAuth: () => {
 		return new Promise((resolve, reject) => {
 			if(store.getState().userState.currentTokenUser) {
