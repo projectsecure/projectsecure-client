@@ -5,11 +5,17 @@ export default [
 	{
 		path: '/challenges/',
 		name: 'challenges',
-		component: Challenges
+		component: Challenges,
+		meta: {
+			title: 'Challanges'
+		}
 	},
 	{
 		path: '/challenges/:slug',
 		name: 'challenge',
-		component: Challenge
+		component: Challenge,
+		meta: {
+			title: 'Challenge'
+		}
 	}
 ];

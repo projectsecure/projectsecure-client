@@ -8,7 +8,13 @@ const composer = (props, onData) => {
 	componentData.title = "Partner werden";
 	componentData.text = (
 		<div>
-			<p>Dein Produkt hilft </p>
+			<p>
+				Ihnen gefällt das ProjectSecure? <br/>
+				Sie wollen ein Teil davon werden und uns dabei unterstützen ein Verständnis für Sicherheit im Netz zu schaffen?<br/>
+				<br/>
+				Dann scheiben sie uns doch eine E-Mail an <b>project-secure@lists.hpi.de</b> mit einer kurzen Beschreibung ihrer Idee.
+				Wir setzen uns dann zeitnah mit ihnen in Verbindung.
+			</p>
 		</div>
 	);
 	onData(null, componentData);

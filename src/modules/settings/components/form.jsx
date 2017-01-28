@@ -11,6 +11,7 @@ class SectionForm extends React.Component {
 		this.state = Object.assign({
 			email: '',
 			password: '',
+			passwordRepeat: '',
 			color: '',
 			username: ''
 		}, this.props.user);
@@ -34,11 +35,11 @@ class SectionForm extends React.Component {
 		this.setState(newState);
 	}
 
-	handleLogin(e) {
-		this.props.actions.login.bind(this)({
-			email: this.state.email,
-			password: this.state.password
-		});
+	handleSave(e) {
+		const data = Object.assign({}, this.state);
+		if(data.password === '') delete data.password;
+
+		this.props.onUserUpdate(data);
 	}
 
 
@@ -109,21 +110,12 @@ class SectionForm extends React.Component {
 										   onChange={this.handleFieldChange.bind(this, 'password')} />
 								</div>
 							</div>
-							<div className="form-group row">
-								<label className="col-xs-3 col-form-label">Neues Passwort wiederholen</label>
-								<div className="col-xs-9">
-									<input type="password"
-										   className="form-control form-control-lg"
-										   placeholder="Passwort"
-										   onChange={this.handleFieldChange.bind(this, 'password')} />
-								</div>
-							</div>
 
 							<div className="form-group row">
 								<label className="col-xs-3 col-form-label"></label>
 								<div className="col-xs-9">
 									<button className="btn btn-primary btn-uppercase btn-block btn-lg btn-save"
-											onClick={this.handleLogin.bind(this)}>
+											onClick={this.handleSave.bind(this)}>
 										Speichern
 									</button>
 								</div>
@@ -143,7 +135,7 @@ class SectionForm extends React.Component {
 								<label className="col-xs-3 col-form-label">Account löschen</label>
 								<div className="col-xs-9">
 									<button className="btn btn-danger btn-uppercase"
-											onClick={this.handleLogin.bind(this)}>
+											onClick={this.props.onUserDelete.bind(this)}>
 										Account löschen
 									</button>
 								</div>

@@ -1,7 +1,23 @@
 import { applyRouterMiddleware, browserHistory, hashHistory, Router, Route, Link } from 'react-router';
 import { useScroll } from 'react-router-scroll';
 
-import Layout from '../components/layout';
+import ErrorPage from '../containers/error-page';
+
+const _forceTrailingSlash = (prevState, nextState, replace) => {
+	const path = nextState.location.pathname;
+	if (path.slice(-1) !== '/') {
+		replace(Object.assign(nextState.location, {
+			pathname: `${path}/`
+		}));
+	}
+};
+
+const _getErrorPageUI = (errorCode) => {
+	return (
+		<ErrorPage errorCode={errorCode} />
+	);
+};
+
 
 export default class App {
 	constructor(context) {
@@ -87,7 +103,20 @@ export default class App {
 				delete route.path;
 			}
 
+			route.onEnter = () => {
+				const title = (route.meta || {}).title;
+				document.title = title ? `${title} - Project Secure` : 'Project Secure';
+			};
+
 			return route;
+		});
+
+		// force trailing slashes with redirect or not found
+		routes.push({
+			path:'*',
+			component: _getErrorPageUI.bind(this, '404'),
+			onEnter: _forceTrailingSlash.bind(this, null),
+			onUpdate: _forceTrailingSlash
 		});
 
 		this.__initialized = true;
