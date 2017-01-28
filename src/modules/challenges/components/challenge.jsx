@@ -1,6 +1,8 @@
 import LayoutBackend from '../../backend/containers/layout';
 import challengeStatus from '../helpers/status';
 
+import marked from 'marked';
+
 require('../styles/challenge.scss');
 
 class Challenge extends React.Component {
@@ -19,7 +21,7 @@ class Challenge extends React.Component {
 					<h2 className="card-title">{title}</h2>
 				</div>
 				<div className="card-block with-border">
-					<p className="card-text">{description}</p>
+					<div className="card-text" dangerouslySetInnerHTML={{__html: marked(description)}} />
 				</div>
 			</div>
 		);
@@ -101,22 +103,28 @@ class Challenge extends React.Component {
 		return (
 			<div>
 				<div className="card-block card-step">
-					<h3 className="card-title">{title}</h3>
-					<p className="card-text">{text}</p>
+					{this.getCardTitleUI(title)}
+					{this.getCardTextUI(text)}
 				</div>
 			</div>
 		);
 	}
 
-	getStepButtonUI(stepName, status, {label, title, text}) {
+	getStepButtonUI(stepName, status, {
+		label,
+		title,
+		text,
+		button_title}) {
 		return (
 			<div>
 				<div className="card-block card-step">
-					<h3 className="card-title">{title}</h3>
-					<p className="card-text">{text}</p>
-					<button className="btn btn-primary"
-							onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
-							disabled={(status == challengeStatus.COMPLETED)}>{label}</button>
+					{this.getCardTitleUI(title)}
+					{this.getCardTextUI(text)}
+					<div className="form-group">
+						<button className="btn btn-primary btn-uppercase btn-block"
+								onClick={this.props.onUpdateStep.bind(this, this.props.slug, stepName, null)}
+								disabled={(status == challengeStatus.COMPLETED)}>{button_title}</button>
+					</div>
 				</div>
 			</div>
 		);
@@ -142,8 +150,8 @@ class Challenge extends React.Component {
 		return (
 			<div>
 				<div className="card-block card-step">
-					<h3 className="card-title">{title}</h3>
-					<p className="card-text">{text}</p>
+					{this.getCardTitleUI(title)}
+					{this.getCardTextUI(text)}
 					<div className="form-group">
 						<div className="col-xs-10 no-padding padding-right">
 							<input
@@ -168,6 +176,36 @@ class Challenge extends React.Component {
 		);
 	}
 
+	getCardTitleUI(title) {
+		if(!title) return;
+
+		return (
+			<h4 className="card-title">{title}</h4>
+		);
+	}
+
+	getCardTextUI(text) {
+		if(!text) return;
+
+		return (
+			<div className="card-text" dangerouslySetInnerHTML={{__html: marked(text)}} />
+		);
+	}
+
+	getCardErrorUI(stepName) {
+		if(!this.props.error || !this.props.error.fields || !this.props.error.fields[stepName]) {
+			return;
+		}
+
+		return (
+			<div className="card-block">
+				<div className="alert alert-danger alert-nomargin">
+					{this.props.error.fields[stepName]}
+				</div>
+			</div>
+		);
+	}
+
 
 	getStepUI({name, type, options, status}) {
 		let content;
@@ -185,9 +223,12 @@ class Challenge extends React.Component {
 				break;
 		}
 
+		const errorUI = this.getCardErrorUI(name);
+
 		if(content) {
 			return (
 				<div className={`card ${this.isActiveStep(name) ? 'card-active' : ''}`}>
+					{errorUI}
 					{content(name, status, options)}
 				</div>
 			)

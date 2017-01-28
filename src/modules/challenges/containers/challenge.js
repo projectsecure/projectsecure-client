@@ -23,6 +23,10 @@ const composer = (props, onData) => {
 			onUpdateStep: (challengeName, stepName, data) => {
 				actions.updateStep(challengeName, stepName, data).then(() => {
 					loadChallenge();
+				}).catch(({error, response}) => {
+					/* TODO: componentData.error stuff */
+
+					loadChallenge();
 				});
 			}
 		};
@@ -31,7 +35,7 @@ const composer = (props, onData) => {
 			actions.getChallenge(challengeName).then((data) => {
 				componentData = Object.assign(componentData, data);
 				onData(null, componentData);
-			}).catch(() => {
+			}).catch((err) => {
 				// if challenge is not started there will be an error
 				actions.startChallenge(challengeName).then((data) => {
 					componentData = Object.assign(componentData, data);

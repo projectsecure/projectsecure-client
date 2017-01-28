@@ -11,9 +11,7 @@ export default {
 				username,
 				password
 			}).end((err, res) => {
-				if(err) {
-					reject(err);
-				}
+				if(err) reject({error: err, response: res});
 
 				if((res.body || {}).token) {
 					store.dispatch({

@@ -24,6 +24,22 @@
 			box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
 			border: 1px solid #ccc;
 		}
+
+		.card-text > *:last-child {
+			margin-bottom: 0px;
+		}
+
+		.card-text + .form-group {
+			margin-top:20px;
+		}
+
+		.form-group {
+			margin-bottom:0px;
+		}
+	}
+
+	.alert-nomargin {
+		margin-bottom:0px;
 	}
 
 	.modal-badge-img {

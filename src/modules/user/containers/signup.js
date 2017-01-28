@@ -22,8 +22,12 @@ const composer = (props, onData) => {
 					}).then(() => {
 						browserHistory.push('/dashboard/');
 					});
-				}).catch(() => {
-					componentData.error = 'Oh, es scheint so, als fehlen einige Informationen. Oder du hast etwas falsch eingegeben.';
+				}).catch(({error, response}) => {
+					componentData.error = {
+						details: error,
+						message: `Oh, es scheint so, als sei ein Fehler aufgetreten.`,
+						fields: response.body
+					};
 					onData(null, componentData);
 				});
 			}

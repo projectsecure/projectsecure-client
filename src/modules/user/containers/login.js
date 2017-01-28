@@ -27,8 +27,12 @@ const composer = (props, onData) => {
 				onLogin: (data) => {
 					actions.login(data).then(() => {
 						browserHistory.push('/dashboard/');
-					}).catch(() => {
-						componentData.error = 'Oh, es scheint so, als hättest du dich vertippt. Oder es existiert kein Account mit den angegebenen Anmeldeinformationen.';
+					}).catch(({error, response}) => {
+						componentData.error = {
+							details: error,
+							message: `Oh, es scheint so, als sei ein Fehler aufgetreten.`,
+							fields: response.body
+						};
 						onData(null, componentData);
 					});
 				}
