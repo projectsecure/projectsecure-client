@@ -16,7 +16,7 @@ A single page application client for "Project Secure" made with ES6, react and w
 
 This client will be deployed automatically into a docker container when setting up "[projectsecure-api](https://github.com/projectsecure/projectsecure-api)".
 
-**Manual setup for development:**
+### Manual setup for development:
 
 (Run steps from "[projectsecure-api](https://github.com/projectsecure/projectsecure-api)" to start the backend).
 
