@@ -28,7 +28,7 @@ This client will be deployed automatically into a docker container when setting 
 
 This project mostly follows the [Mantra Architecture](https://kadirahq.github.io/mantra/) to allow developers to easily extend the project. 
 
-All views are bundled into [modules](https://kadirahq.github.io/mantra/#sec-Mantra-Modules) including [actions](https://kadirahq.github.io/mantra/#sec-Actions), [components](https://kadirahq.github.io/mantra/#sec-React-as-the-UI) and [containers](https://kadirahq.github.io/mantra/#sec-Containers). 
+All views are bundled into [modules](https://kadirahq.github.io/mantra/#sec-Mantra-Modules) including [actions](https://kadirahq.github.io/mantra/#sec-Actions), [components](https://kadirahq.github.io/mantra/#sec-React-as-the-UI) and [containers](https://kadirahq.github.io/mantra/#sec-Containers). <br>
 *See Mantra specification for proper explanations on the purpose of this separation.*
  
  This project uses eslinter to enforce a common coding style. You can run the linter by executing `npm test`.
