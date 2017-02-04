@@ -18,7 +18,7 @@ This client will be deployed automatically into a docker container when setting 
 
 ### Manual setup for development:
 
-(Run steps from "[projectsecure-api](https://github.com/projectsecure/projectsecure-api)" to start the backend).
+*Run steps from "[projectsecure-api](https://github.com/projectsecure/projectsecure-api)" to start the backend.*
 
 1. Clone this repo into a local directory
 1. Open directory and execute `npm install`
