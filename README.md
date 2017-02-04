@@ -1,6 +1,8 @@
 # Project Secure - Client
 A single page application client for "Project Secure" made with ES6, react and webpack.
 
+![Screenshot](https://raw.githubusercontent.com/projectsecure/projectsecure-client/master/screenshot.png)
+
 ## Requirements
 
 - NodeJS
